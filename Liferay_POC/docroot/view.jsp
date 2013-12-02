@@ -18,4 +18,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>Liferay POC</b> portlet.
+<h1>This is the <b>Liferay POC</b> portlet.</h1>

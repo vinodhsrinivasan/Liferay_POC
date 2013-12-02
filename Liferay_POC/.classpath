@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="docroot/WEB-INF/src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_45">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -18,5 +19,23 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-webmvc-portlet-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="testlib/hamcrest-all-1.3.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-context-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-web-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-webmvc-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-aop-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-beans-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-context-support-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-core-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-expression-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/spring-tx-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/jcl-over-slf4j-1.7.5.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/slf4j-jdk14-1.7.2.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/slf4j-log4j12-1.7.5.jar"/>
+	<classpathentry kind="lib" path="testlib/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="testlib/spring-test-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="docroot/WEB-INF/classes"/>
 </classpath>

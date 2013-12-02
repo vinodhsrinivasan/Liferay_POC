@@ -5,8 +5,10 @@
 	<portlet>
 		<portlet-name>Liferay_POC</portlet-name>
 		<icon>/icon.png</icon>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+		<header-portlet-css>/assets/css/bootstrap-namespace.css</header-portlet-css>		
+		<header-portlet-javascript>/assets/js/jquery-1.10.2.min.js</header-portlet-javascript>
+		<header-portlet-javascript>/assets/js/bootstrap.min.js</header-portlet-javascript>	
+		<header-portlet-javascript>/assets/js/jquery.validate-1.11.1.js</header-portlet-javascript>	
 		<css-class-wrapper>Liferay_POC-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
