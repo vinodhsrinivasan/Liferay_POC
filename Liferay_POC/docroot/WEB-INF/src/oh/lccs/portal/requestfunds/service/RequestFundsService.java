@@ -1,9 +1,9 @@
 package oh.lccs.portal.requestfunds.service;
 
-import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 
 public interface RequestFundsService {
 
-	SacwisDTO searchForm(SacwisDTO dto);
+	RequestFundsDTO searchForm(RequestFundsDTO dto);
 
 }

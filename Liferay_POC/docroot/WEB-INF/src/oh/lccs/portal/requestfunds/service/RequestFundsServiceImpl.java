@@ -1,7 +1,7 @@
 package oh.lccs.portal.requestfunds.service;
 
 import oh.lccs.portal.LucasAnnotationConstants;
-import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 
 import org.springframework.stereotype.Service;
 
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 public class RequestFundsServiceImpl implements RequestFundsService {
 
 	@Override
-	public SacwisDTO searchForm(SacwisDTO dto) {
+	public RequestFundsDTO searchForm(RequestFundsDTO dto) {
 		return mockData();
 	}
 	
-	private SacwisDTO mockData(){
+	private RequestFundsDTO mockData(){
 		
-		SacwisDTO searchResult= new SacwisDTO();
+		RequestFundsDTO searchResult= new RequestFundsDTO();
 		searchResult.setSacwisId("1234");
 		searchResult.setSacwisName("Sacwis Name");
 		searchResult.setSacwisApproverName( "My Approver");

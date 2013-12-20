@@ -1,7 +1,7 @@
 package oh.lccs.portal.requestfunds.service;
 
 import static org.junit.Assert.*;
-import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
 import oh.lccs.portal.requestfunds.service.RequestFundsServiceImpl;
 
@@ -19,7 +19,7 @@ public class RequestFundsServiceImplTest {
 	}
 	@Test
 	public void searchForm() {
-		SacwisDTO dto = new SacwisDTO(); 
+		RequestFundsDTO dto = new RequestFundsDTO(); 
 		dto = service.searchForm(dto);
 		
 		assertNotNull(dto);

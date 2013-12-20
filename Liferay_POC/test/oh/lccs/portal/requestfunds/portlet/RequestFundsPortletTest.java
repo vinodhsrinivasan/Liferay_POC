@@ -1,8 +1,8 @@
 package oh.lccs.portal.requestfunds.portlet;
 
-import oh.lccs.portal.requestfunds.dto.SacwisDTO;
-import oh.lccs.portal.requestfunds.portlet.SacwisApplicationPortlet;
-import oh.lccs.portal.requestfunds.portlet.SacwisForm;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
+import oh.lccs.portal.requestfunds.portlet.RequestFundsPortlet;
+import oh.lccs.portal.requestfunds.portlet.RequestFundsForm;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
 import org.junit.Before;
@@ -15,16 +15,16 @@ import org.springframework.ui.Model;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class SacwisApplicationPortletTest {
+public class RequestFundsPortletTest {
 	
-	SacwisApplicationPortlet object;
+	RequestFundsPortlet object;
 	@Mock private Model model;
 	@Mock private RequestFundsService sacwisService;
 	
 	@Before
 	public void setup(){
 		MockitoAnnotations.initMocks(this);
-		object = new SacwisApplicationPortlet();
+		object = new RequestFundsPortlet();
 		//sacwisService = mock(SacwisService.class);
 		ReflectionTestUtils.setField(object, "sacwisService", sacwisService);
 	}
@@ -37,10 +37,10 @@ public class SacwisApplicationPortletTest {
 	
 	@Test
 	public void searchForm(){
-		SacwisForm form =new SacwisForm();
-		SacwisDTO dto = new SacwisDTO();
+		RequestFundsForm form =new RequestFundsForm();
+		RequestFundsDTO dto = new RequestFundsDTO();
 		dto.formToDTO(form);
-		when(sacwisService.searchForm(any(SacwisDTO.class) )).thenReturn(dto);
+		when(sacwisService.searchForm(any(RequestFundsDTO.class) )).thenReturn(dto);
 		object.searchForm(form, model);
 	}
 
