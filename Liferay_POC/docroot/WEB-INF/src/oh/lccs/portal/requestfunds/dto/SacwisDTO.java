@@ -1,6 +1,6 @@
-package oh.lucas.portal.sacwis.dto;
+package oh.lccs.portal.requestfunds.dto;
 
-import oh.lucas.portal.sacwis.portlet.SacwisForm;
+import oh.lccs.portal.requestfunds.portlet.SacwisForm;
 
 public class SacwisDTO {
 	

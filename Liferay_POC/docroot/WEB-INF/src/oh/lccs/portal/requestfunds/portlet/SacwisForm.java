@@ -1,4 +1,4 @@
-package oh.lucas.portal.sacwis.portlet;
+package oh.lccs.portal.requestfunds.portlet;
 
 import org.springframework.beans.factory.annotation.Configurable;
 

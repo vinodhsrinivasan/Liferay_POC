@@ -1,7 +1,9 @@
-package oh.lucas.portal.sacwis.portlet;
+package oh.lccs.portal.requestfunds.portlet;
 
-import oh.lucas.portal.sacwis.dto.SacwisDTO;
-import oh.lucas.portal.sacwis.service.SacwisService;
+import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.portlet.SacwisApplicationPortlet;
+import oh.lccs.portal.requestfunds.portlet.SacwisForm;
+import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +19,7 @@ public class SacwisApplicationPortletTest {
 	
 	SacwisApplicationPortlet object;
 	@Mock private Model model;
-	@Mock private SacwisService sacwisService;
+	@Mock private RequestFundsService sacwisService;
 	
 	@Before
 	public void setup(){

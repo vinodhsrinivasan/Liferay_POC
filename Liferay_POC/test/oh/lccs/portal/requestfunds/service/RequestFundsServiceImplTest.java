@@ -1,18 +1,20 @@
-package oh.lucas.portal.sacwis.service;
+package oh.lccs.portal.requestfunds.service;
 
 import static org.junit.Assert.*;
-import oh.lucas.portal.sacwis.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.service.RequestFundsService;
+import oh.lccs.portal.requestfunds.service.RequestFundsServiceImpl;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class SacwisServiceImplTest {
+public class RequestFundsServiceImplTest {
 
-	SacwisService service = null;
+	RequestFundsService service = null;
 	
 	@Before 
 	public void setup(){
-		service = new SacwisServiceImpl();
+		service = new RequestFundsServiceImpl();
 		
 	}
 	@Test

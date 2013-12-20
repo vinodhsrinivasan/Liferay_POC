@@ -1,12 +1,12 @@
-package oh.lucas.portal.sacwis.service;
+package oh.lccs.portal.requestfunds.service;
 
-import oh.lucas.portal.LucasAnnotationConstants;
-import oh.lucas.portal.sacwis.dto.SacwisDTO;
+import oh.lccs.portal.LucasAnnotationConstants;
+import oh.lccs.portal.requestfunds.dto.SacwisDTO;
 
 import org.springframework.stereotype.Service;
 
-@Service(value=LucasAnnotationConstants.SACWIS_SERVICE)
-public class SacwisServiceImpl implements SacwisService {
+@Service(value=LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
+public class RequestFundsServiceImpl implements RequestFundsService {
 
 	@Override
 	public SacwisDTO searchForm(SacwisDTO dto) {

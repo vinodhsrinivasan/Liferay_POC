@@ -1,8 +1,8 @@
-package oh.lucas.portal.sacwis.portlet;
+package oh.lccs.portal.requestfunds.portlet;
 
-import oh.lucas.portal.LucasAnnotationConstants;
-import oh.lucas.portal.sacwis.dto.SacwisDTO;
-import oh.lucas.portal.sacwis.service.SacwisService;
+import oh.lccs.portal.LucasAnnotationConstants;
+import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,8 +22,8 @@ public class SacwisApplicationPortlet {
 	private static final String SEARCH_FORM = "sacwis/searchForm";
 	
 	@Autowired
-	@Qualifier(LucasAnnotationConstants.SACWIS_SERVICE)
-	private SacwisService sacwisService;
+	@Qualifier(LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
+	private RequestFundsService sacwisService;
 
 	@RenderMapping
 	public String loadForm() {
