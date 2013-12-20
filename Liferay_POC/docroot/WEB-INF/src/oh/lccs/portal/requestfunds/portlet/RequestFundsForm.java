@@ -3,7 +3,7 @@ package oh.lccs.portal.requestfunds.portlet;
 import org.springframework.beans.factory.annotation.Configurable;
 
 @Configurable
-public class SacwisForm {
+public class RequestFundsForm {
 	private String sacwisId;
 	private String sacwisName;
 

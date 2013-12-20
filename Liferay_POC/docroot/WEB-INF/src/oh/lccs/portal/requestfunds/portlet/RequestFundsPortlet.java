@@ -1,7 +1,7 @@
 package oh.lccs.portal.requestfunds.portlet;
 
 import oh.lccs.portal.LucasAnnotationConstants;
-import oh.lccs.portal.requestfunds.dto.SacwisDTO;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.portlet.bind.annotation.RenderMapping;
 
 @RequestMapping("VIEW")
 @Controller
-public class SacwisApplicationPortlet {
+public class RequestFundsPortlet {
 
 	
 	private static final String SEARCH_RESULT = "sacwis/searchResult";
@@ -31,12 +31,12 @@ public class SacwisApplicationPortlet {
 	}
 
 	@RenderMapping(params="sacwisApplication=searchForm")
-	public String searchForm(SacwisForm form, Model model){
+	public String searchForm(RequestFundsForm form, Model model){
 		
-		SacwisDTO dto = new SacwisDTO();
+		RequestFundsDTO dto = new RequestFundsDTO();
 		dto.formToDTO(form);
 		dto = sacwisService.searchForm(dto );
-		SacwisForm searchResult= new SacwisForm();
+		RequestFundsForm searchResult= new RequestFundsForm();
 		dto.dtoToForm(searchResult);
 		
 		model.addAttribute("SACWIS_SEARCH_RESULT",searchResult);
@@ -45,8 +45,8 @@ public class SacwisApplicationPortlet {
 	}
 	
 	@ModelAttribute("sacwisForm")
-	public SacwisForm getCommandObject(){
-		return new SacwisForm();
+	public RequestFundsForm getCommandObject(){
+		return new RequestFundsForm();
 	}
 
 }
