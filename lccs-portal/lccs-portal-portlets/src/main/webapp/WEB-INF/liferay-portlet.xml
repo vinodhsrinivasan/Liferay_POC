@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.1.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_1_0.dtd">
+
+<liferay-portlet-app>
+	<portlet>
+		<portlet-name>cfna-app</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/apply-credit-card.css</header-portlet-css>
+		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
+		<header-portlet-javascript>/js/apply-credit-card.js</header-portlet-javascript>
+	</portlet>
+	<portlet>
+		<portlet-name>registration</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/register-credit-card.css</header-portlet-css>
+		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
+		<header-portlet-javascript>/js/register-credit-card.js</header-portlet-javascript>
+	</portlet>
+	<portlet>
+		<portlet-name>cardservices</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/card-services.css</header-portlet-css>
+		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
+		<header-portlet-javascript>/js/card-services.js</header-portlet-javascript>
+	</portlet>
+	
+	<role-mapper>
+		<role-name>administrator</role-name>
+		<role-link>Administrator</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>guest</role-name>
+		<role-link>Guest</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>power-user</role-name>
+		<role-link>Power User</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>user</role-name>
+		<role-link>User</role-link>
+	</role-mapper>
+</liferay-portlet-app>
