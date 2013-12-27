@@ -9,20 +9,6 @@
 		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
 		<header-portlet-javascript>/js/apply-credit-card.js</header-portlet-javascript>
 	</portlet>
-	<portlet>
-		<portlet-name>registration</portlet-name>
-		<icon>/icon.png</icon>
-		<header-portlet-css>/css/register-credit-card.css</header-portlet-css>
-		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
-		<header-portlet-javascript>/js/register-credit-card.js</header-portlet-javascript>
-	</portlet>
-	<portlet>
-		<portlet-name>cardservices</portlet-name>
-		<icon>/icon.png</icon>
-		<header-portlet-css>/css/card-services.css</header-portlet-css>
-		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
-		<header-portlet-javascript>/js/card-services.js</header-portlet-javascript>
-	</portlet>
 	
 	<role-mapper>
 		<role-name>administrator</role-name>
