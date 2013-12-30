@@ -18,4 +18,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>cfna-app</b>.
+This is the <b>lccs-app</b>.
