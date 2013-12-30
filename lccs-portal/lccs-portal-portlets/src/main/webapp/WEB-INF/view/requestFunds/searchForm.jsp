@@ -5,11 +5,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <portlet:renderURL var="searchApplicationUrl">
-	<portlet:param name="sacwisApplication" value="searchForm" />
+	<portlet:param name="requestFundsApplication" value="searchForm" />
 </portlet:renderURL>
 
 <div class="bootstrap3">
-	<form:form name="SacwisForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="${searchApplicationUrl}">
+	<form:form name="requestFundsForm" class="form-inline" role="form" commandName="requestFundsForm" method="post" action="${searchApplicationUrl}">
 
 		<div class="form-group">
 			<label for="sacwisId">Sacwis ID</label> 

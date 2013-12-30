@@ -1,8 +1,5 @@
 package oh.lccs.portal.requestfunds.portlet;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import oh.lccs.portal.requestfunds.converter.RequestFundsDTOConverter;
 import oh.lccs.portal.requestfunds.converter.RequestFundsFormConverter;
 import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
@@ -17,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @RequestMapping("VIEW")
@@ -26,7 +22,7 @@ public class RequestFundsPortlet {
 
 	
 	private static final String SEARCH_RESULT = "requestFunds/searchResult";
-	private static final String SEARCH_FORM = " requestFunds  /searchForm";
+	private static final String SEARCH_FORM = "requestFunds/searchForm";
 	
 	
 	@Autowired
@@ -40,24 +36,23 @@ public class RequestFundsPortlet {
 	private RequestFundsService requestFundsService;
 
 	@RenderMapping
-	public ModelAndView loadForm() {
-		 final Map<String, Object> model = new HashMap<String, Object>();
-		 return new ModelAndView(SEARCH_FORM,model);
+	public String loadForm() {
+		 return SEARCH_FORM;
 	}
 	
 
-	@RenderMapping(params="sacwisApplication=searchForm")
-	public ModelAndView searchForm(RequestFundsForm form){
-		final Map<String, Object> model = new HashMap<String, Object>();
+	@RenderMapping(params="requestFundsApplication=searchForm")
+	public String searchForm(RequestFundsForm form, Model model){
+		
 		RequestFundsDTO dto = formConverter.convert(form);
 		dto = requestFundsService.searchForm(dto );
 		RequestFundsForm searchResult=dtoConverter.convert(dto);
 		
-		model.put("SACWIS_SEARCH_RESULT",searchResult);
-		return new ModelAndView(SEARCH_RESULT);
+		model.addAttribute("SACWIS_SEARCH_RESULT",searchResult);
+		return SEARCH_RESULT;
 	}
 	
-	@ModelAttribute("sacwisForm")
+	@ModelAttribute("requestFundsForm")
 	public RequestFundsForm getCommandObject(){
 		return new RequestFundsForm();
 	}
