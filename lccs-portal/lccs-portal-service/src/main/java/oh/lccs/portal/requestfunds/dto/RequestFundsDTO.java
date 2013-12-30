@@ -2,7 +2,7 @@ package oh.lccs.portal.requestfunds.dto;
 
 import java.util.List;
 
-import oh.lccs.portal.requestfunds.portlet.RequestFundsForm;
+import oh.lccs.portal.requestfunds.form.RequestFundsForm;
 
 public class RequestFundsDTO {
 	

@@ -3,7 +3,7 @@
  */
 package oh.lccs.portal.requestfunds.dto;
 
-import oh.lccs.portal.requestfunds.portlet.RequestFundsSearchForm;
+import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;
 
 /**
  * @author BCMSZV0
