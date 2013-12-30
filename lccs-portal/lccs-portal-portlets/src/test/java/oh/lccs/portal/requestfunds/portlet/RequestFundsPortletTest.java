@@ -1,5 +1,7 @@
 package oh.lccs.portal.requestfunds.portlet;
 
+import java.util.Map;
+
 import oh.lccs.portal.requestfunds.converter.RequestFundsDTOConverter;
 import oh.lccs.portal.requestfunds.converter.RequestFundsFormConverter;
 import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
@@ -7,6 +9,7 @@ import oh.lccs.portal.requestfunds.form.RequestFundsForm;
 import oh.lccs.portal.requestfunds.portlet.RequestFundsPortlet;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
+import org.springframework.web.servlet.ModelAndView;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,7 +23,6 @@ import static org.mockito.Mockito.*;
 public class RequestFundsPortletTest {
 	
 	RequestFundsPortlet object;
-	@Mock private Model model;
 	@Mock private RequestFundsService requestFundsService;
 	@Mock private RequestFundsFormConverter formConverter;
 	@Mock private RequestFundsDTOConverter dtoConverter;
@@ -37,8 +39,8 @@ public class RequestFundsPortletTest {
 
 	@Test
 	public void loadForm() {
-		String result = object.loadForm();
-		assertEquals("sacwis/searchForm", result);
+		ModelAndView result = object.loadForm();
+		assertEquals("sacwis/searchForm", result.getViewName());
 	}
 	
 	@Test
@@ -46,7 +48,7 @@ public class RequestFundsPortletTest {
 		RequestFundsForm form =new RequestFundsForm();
 		RequestFundsDTO dto = new RequestFundsDTO();
 		when(requestFundsService.searchForm(any(RequestFundsDTO.class) )).thenReturn(dto);
-		object.searchForm(form, model);
+		object.searchForm(form);
 	}
 
 }
