@@ -5,23 +5,49 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <portlet:renderURL var="searchApplicationUrl">
-	<portlet:param name="requestFundsApplication" value="searchForm" />
+	<portlet:param name="sacwisApplication" value="searchForm" />
 </portlet:renderURL>
 
 <div class="bootstrap3">
-	<form:form name="requestFundsForm" class="form-inline" role="form" commandName="requestFundsForm" method="post" action="${searchApplicationUrl}">
+	<form:form name="SacwisForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="${searchApplicationUrl}">
 
 		<div class="form-group">
-			<label for="sacwisId">Sacwis ID</label> 
-			<form:input path="sacwisId" class="form-control"/>
+		<table>
+		<tr>
+			<td>
+				<label for="sacwisName">Caseworker Requesting:</label> 
+				<c:out value="${requestingCaseWorker}"></c:out>
+			</td>
+			<td>
+				<label for="sacwisName">Worker Phone:</label> 
+				<c:out value="${workerPhoneNumber}"></c:out>
+			</td>
+			<td>
+				<label for="sacwisName">Date:</label> 
+			 	<c:out value="${requestedDate}"></c:out>
+			</td>
+		</tr>
+		</table>
 		</div>
-		
+
 		<div class="form-group">
-			<label for="sacwisName">Sacwis Name</label> 
-			<form:input path="sacwisName" class="form-control"/>
+		<table>
+		<tr>
+			<td>
+			<label for="sacwisId">Sacwis ID</label> 
+				<form:input path="sacwisId" class="form-control"/>
+			</td>
+			<td>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</td>
+		</tr>
+		
+		</table>
 		</div>
 		
-		<button type="submit" class="btn btn-primary">Submit</button>
+		
+		
+		
 		
 	</form:form>
 </div>
