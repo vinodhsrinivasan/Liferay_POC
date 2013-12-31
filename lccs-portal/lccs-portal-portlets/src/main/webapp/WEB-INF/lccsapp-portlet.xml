@@ -8,10 +8,18 @@
 
 	<context:component-scan base-package="oh.lccs.portal.requestfunds" />
 
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	
 	<bean
-		class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+		class="org.springframework.web.portlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="customArgumentResolvers">
+			<bean class="oh.lccs.portal.portlet.springmvc.extension.ResourceRequestEntityAnnotationResolver" />
+		</property>
+	</bean>
 
 
+	<bean class="oh.lccs.portal.portlet.springmvc.extension.ValidationExceptionResolver" />
+		
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
 		p:basename="classpath:messages" />

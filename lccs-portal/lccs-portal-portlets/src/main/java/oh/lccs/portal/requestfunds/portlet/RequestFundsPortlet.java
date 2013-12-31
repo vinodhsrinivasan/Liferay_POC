@@ -1,12 +1,23 @@
 package oh.lccs.portal.requestfunds.portlet;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
+import oh.lccs.portal.LucasAnnotationConstants;
+import oh.lccs.portal.portlet.springmvc.extension.ResourceRequestEntity;
+import oh.lccs.portal.requestfunds.converter.RequestFundsFormConverter;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
+import oh.lccs.portal.requestfunds.form.RequestFundsForm;
 import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;
+import oh.lccs.portal.requestfunds.service.RequestFundsService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
@@ -16,30 +27,56 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 public class RequestFundsPortlet {
 
 	
-	private static final String SEARCH_RESULT = "requestFunds/caseDetails";
+	private static final String CASE_DETAILS = "requestFunds/caseDetails";
+	
 	private static final String SEARCH_FORM = "requestFunds/search";
+	
+	private static final String FUND_REQUEST_CONFIRMATION = "requestFunds/confirmation";
 	
 	/** Credit card application resource ID*/
     private static final String SEARCH_RESOURCE_ID = "searchCaseBasedOnSacwisNumber";
+    private static final String FUND_REQUEST_RESOURCE_ID = "fundRequestSubmitURL";
+
+    private static final DateFormat REQUEST_DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
     
 	
-	//@Autowired
-	//@Qualifier(LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
-	//private RequestFundsService sacwisService;
+	@Autowired
+	@Qualifier(LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
+	private RequestFundsService requestFundsService;
+	
+	@Autowired
+	RequestFundsFormConverter fundsFormConverter;
 	
 	@RenderMapping
 	public String loadSearchPage(Model model) {
 		
-		model.addAttribute("requestingCaseWorker","Requesting Case Worker");
-		model.addAttribute("workerPhoneNumber","Worker Phone Number");
-		model.addAttribute("requestedDate","Requested Date");
+		setMockRequestAttributes(model);
+		
 		return SEARCH_FORM;
 	}
 
+
 	 @ResourceMapping(value = SEARCH_RESOURCE_ID)
-	public String loadSearchPage(@ModelAttribute @Valid RequestFundsSearchForm form ,Model model) {
+	public String loadSearchPage(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsForm ,Model model) {
+		 setMockRequestAttributes(model);
+		 model.addAttribute("caseWorker","Mark Waugh");
+		 RequestFundsDTO dto = new RequestFundsDTO();
+		 dto.setSacwisId(requestFundsForm.getSacwisId());
+		 
+		RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
 		
-		return SEARCH_RESULT;
+		return CASE_DETAILS;
+	}
+	 
+	 @ResourceMapping(value = FUND_REQUEST_RESOURCE_ID)
+	public String fundRequestSubmit(@ResourceRequestEntity @Valid RequestFundsForm form ,Model model) {
+		 	
+			return FUND_REQUEST_CONFIRMATION;
 	}
 
+	 private void setMockRequestAttributes(Model model) {
+		 model.addAttribute("requestingCaseWorker","Mark Waugh");
+		 model.addAttribute("workerPhoneNumber","723-123-4567");
+		 model.addAttribute("requestedDate",REQUEST_DATE_FORMAT.format( new Date()));
+	 }
 }

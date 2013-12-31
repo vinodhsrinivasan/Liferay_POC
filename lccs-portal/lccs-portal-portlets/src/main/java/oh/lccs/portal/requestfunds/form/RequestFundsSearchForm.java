@@ -36,13 +36,14 @@ public class RequestFundsSearchForm {
 	public void setRequestedDate(String requestedDate) {
 		this.requestedDate = requestedDate;
 	}
-
-	
 	@Override
 	public String toString() {
-		return "SacwisForm [sacwisId=" + sacwisId + ", requestingCaseWorker="
-				+ requestingCaseWorker + ", workerPhoneNumber=" + workerPhoneNumber + "requestedDate=" + requestedDate 
-				+ "]";
+		return "RequestFundsSearchForm [sacwisId=" + sacwisId
+				+ ", requestingCaseWorker=" + requestingCaseWorker
+				+ ", workerPhoneNumber=" + workerPhoneNumber
+				+ ", requestedDate=" + requestedDate + "]";
 	}
+
+	
 
 }

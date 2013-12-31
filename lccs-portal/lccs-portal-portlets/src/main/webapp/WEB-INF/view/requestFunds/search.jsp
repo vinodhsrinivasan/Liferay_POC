@@ -10,47 +10,53 @@
 	<div id="server-form-validation-errors"><!-- server form validation errors div --></div>
 	<div id="form-validation-errors"><ul><!-- errors --></ul></div>
 	
-	<div class="form-group" id="lccs-request-for-funds-case-worker">
-		<table>
-		<tr>
-			<td>
-				<label for="caseWorkerName">Caseworker Requesting:</label> 
-				<c:out value="${requestingCaseWorker}"></c:out>
-			</td>
-			<td>
-				<label for="caseWorkerPhone">Worker Phone:</label> 
-				<c:out value="${workerPhoneNumber}"></c:out>
-			</td>
-			<td>
-				<label for="requestDate">Date:</label> 
-			 	<c:out value="${requestedDate}"></c:out>
-			</td>
-		</tr>
-		</table>
-	</div>	<!-- End: lccs-request-for-funds-case-worker -->
+	<div id="lccs-request-for-funds-main-content">
 	
-	<div id="lccs-request-for-funds-main-content" class="tab-content-container">
-		<form action="#" class="form-inline" role="form" id="requestFundsSearchForm" onsubmit="return false;">
-	
-			<div class="form-group">
+		<div class="tab-content-container form-group" id="lccs-request-for-funds-case-worker">
 			<table>
 			<tr>
 				<td>
-				<label for="sacwisId">Sacwis ID</label> 
-					<input id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
+					<label for="caseWorkerName">Caseworker Requesting:</label> 
+					<c:out value="${requestingCaseWorker}"></c:out>
 				</td>
 				<td>
-					<button type="submit" class="btn btn-primary" id="requestFundsSearchFormSubmit">Search</button>
+					<label for="caseWorkerPhone">Worker Phone:</label> 
+					<c:out value="${workerPhoneNumber}"></c:out>
+				</td>
+				<td>
+					<label for="requestDate">Date:</label> 
+				 	<c:out value="${requestedDate}"></c:out>
 				</td>
 			</tr>
-			
 			</table>
-			</div>
-			
-		</form>
-	</div><!-- End:lccs-request-for-funds-main-content -->
+		</div>	<!-- End: lccs-request-for-funds-case-worker -->
+		<br/> <!-- Seperator -->
+		
+		<div id="lccs-request-for-funds-form-content" class="tab-content-container">
+			<form action="#" class="form-inline" role="form" id="requestFundsSearchForm" onsubmit="return false;">
+		
+				<div class="form-group">
+				<table>
+				<tr>
+					<td>
+					<label for="sacwisId">Sacwis ID</label> 
+						<input id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
+					</td>
+					<td>
+						<button type="submit" class="btn btn-primary" id="requestFundsSearchFormSubmit">Search</button>
+					</td>
+				</tr>
+				
+				</table>
+				</div>
+				
+			</form>
+		</div><!-- End:lccs-request-for-funds-form-content -->
+	</div><!--lccs-request-for-funds-main-content -->
 	
 </div> <!--End: lccs-request-for-funds-body  -->
+<div id="lccs-request-for-funds-search-result-content">
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="true" tabindex="-1" role="modal"
@@ -68,3 +74,8 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<script type="text/javascript">
+$(function() {
+	requestFundsSearchObj.init('${searchCaseBasedOnSacwisNumber}');
+});
+</script>

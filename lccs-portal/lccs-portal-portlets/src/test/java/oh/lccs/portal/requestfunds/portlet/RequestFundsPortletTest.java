@@ -1,6 +1,10 @@
 package oh.lccs.portal.requestfunds.portlet;
 
 import static org.junit.Assert.assertEquals;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import oh.lccs.portal.requestfunds.converter.RequestFundsDTOConverter;
 import oh.lccs.portal.requestfunds.converter.RequestFundsFormConverter;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
@@ -32,6 +36,9 @@ public class RequestFundsPortletTest {
 
 	@Test
 	public void loadForm() {
+		/*SimpleDateFormat fd = new SimpleDateFormat("MM/dd/yyyy");
+		Date d = new Date();
+		System.out.println(fd.format(d));*/
 		String result = object.loadSearchPage(model);
 		assertEquals("requestFunds/search", result);
 	}
