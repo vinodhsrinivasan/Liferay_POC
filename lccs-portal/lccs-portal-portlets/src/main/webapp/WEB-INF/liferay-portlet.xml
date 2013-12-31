@@ -3,11 +3,12 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>cfna-app</portlet-name>
+		<portlet-name>lccs-app</portlet-name>
 		<icon>/icon.png</icon>
-		<header-portlet-css>/css/apply-credit-card.css</header-portlet-css>
-		<header-portlet-javascript>/js/jquery.validate-1.11.1.js</header-portlet-javascript>
-		<header-portlet-javascript>/js/apply-credit-card.js</header-portlet-javascript>
+		<header-portlet-css>/css/request-funds.css</header-portlet-css>
+		<header-portlet-javascript>/js/jquery/jquery-1.10.2.min.js</header-portlet-javascript>
+		<header-portlet-javascript>/js/jquery/jquery.validate-1.11.1.js</header-portlet-javascript>
+		<header-portlet-javascript>/js/request-funds.js</header-portlet-javascript>
 	</portlet>
 	
 	<role-mapper>

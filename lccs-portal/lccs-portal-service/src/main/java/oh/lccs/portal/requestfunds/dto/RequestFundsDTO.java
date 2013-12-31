@@ -2,7 +2,7 @@ package oh.lccs.portal.requestfunds.dto;
 
 import java.util.List;
 
-import oh.lccs.portal.requestfunds.form.RequestFundsForm;
+/*import oh.lccs.portal.requestfunds.form.RequestFundsForm;*/
 
 public class RequestFundsDTO {
 	
@@ -151,11 +151,11 @@ public class RequestFundsDTO {
 		this.lineItem = lineItem;
 	}
 	
-	public void formToDTO(RequestFundsForm form) {
+	/*public void formToDTO(RequestFundsForm form) {
 		setSacwisId(form.getSacwisId());
-	}
+	}*/
 	
-	//TODO: Need to move to spl converter
+	/*//TODO: Need to move to spl converter
 	public void dtoToForm(RequestFundsForm form){
 		form.setSacwisId(getSacwisId());
 		form.setRequestedDate(getRequestedDate());
@@ -182,5 +182,5 @@ public class RequestFundsDTO {
 		form.setBudgetCenter(getBudgetCenter());
 		form.setFurnitureDeliveryAddress(getFurnitureDeliveryAddress());
 		form.setLineItem(getLineItem());
-	}
+	}*/
 }

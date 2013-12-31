@@ -1,58 +1,45 @@
 package oh.lccs.portal.requestfunds.portlet;
 
-import oh.lccs.portal.LucasAnnotationConstants;
-import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
-import oh.lccs.portal.requestfunds.service.RequestFundsService;
+import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
-
+@RequestMapping("VIEW")
 @Controller
 public class RequestFundsPortlet {
 
 	
-	private static final String SEARCH_RESULT = "sacwis/searchResult";
-	private static final String SEARCH_FORM = "sacwis/searchForm";
+	private static final String SEARCH_RESULT = "requestFunds/caseDetails";
+	private static final String SEARCH_FORM = "requestFunds/search";
 	
-	@Autowired
-	@Qualifier(LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
-	private RequestFundsService sacwisService;
-
+	/** Credit card application resource ID*/
+    private static final String SEARCH_RESOURCE_ID = "searchCaseBasedOnSacwisNumber";
+    
+	
+	//@Autowired
+	//@Qualifier(LucasAnnotationConstants.REQUEST_FUNDS_SERVICE)
+	//private RequestFundsService sacwisService;
+	
 	@RenderMapping
-	public String loadForm(RequestFundsForm form, Model model) {
-		RequestFundsDTO dto = new RequestFundsDTO();
-		dto.formToDTO(form);
-		dto = sacwisService.searchForm(dto );
-		RequestFundsForm searchResult= new RequestFundsForm();
-		dto.dtoToForm(searchResult);
+	public String loadSearchPage(Model model) {
 		
-		model.addAttribute("SACWIS_SEARCH_RESULT",searchResult);
-		
-		return SEARCH_RESULT;
-	}
-
-	@RenderMapping(params="sacwisApplication=searchForm")
-	public String saveForm(RequestFundsForm form, Model model){
-		
-		RequestFundsDTO dto = new RequestFundsDTO();
-		dto.formToDTO(form);
-		dto = sacwisService.searchForm(dto );
-		RequestFundsForm searchResult= new RequestFundsForm();
-		dto.dtoToForm(searchResult);
-		
-		model.addAttribute("SACWIS_SEARCH_RESULT",searchResult);
-		
+		model.addAttribute("requestingCaseWorker","Requesting Case Worker");
+		model.addAttribute("workerPhoneNumber","Worker Phone Number");
+		model.addAttribute("requestedDate","Requested Date");
 		return SEARCH_FORM;
 	}
-	
-	@ModelAttribute("sacwisForm")
-	public RequestFundsForm getCommandObject(){
-		return new RequestFundsForm();
+
+	 @ResourceMapping(value = SEARCH_RESOURCE_ID)
+	public String loadSearchPage(@ModelAttribute @Valid RequestFundsSearchForm form ,Model model) {
+		
+		return SEARCH_RESULT;
 	}
 
 }

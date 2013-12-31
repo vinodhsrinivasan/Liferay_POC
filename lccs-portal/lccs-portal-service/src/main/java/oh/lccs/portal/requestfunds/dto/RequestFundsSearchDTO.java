@@ -3,7 +3,7 @@
  */
 package oh.lccs.portal.requestfunds.dto;
 
-import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;
+/*import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;*/
 
 /**
  * @author BCMSZV0
@@ -42,8 +42,8 @@ public class RequestFundsSearchDTO {
 			this.sacwisId = sacwisId;
 		}
 		//TODO: Need to move to spl converter
-		public void formToDTO(RequestFundsSearchForm form) {
+/*		public void formToDTO(RequestFundsSearchForm form) {
 			setSacwisId(form.getSacwisId());
-		}
+		}*/
 
 }

@@ -1,4 +1,4 @@
-package oh.lccs.portal.requestfunds.portlet;
+package oh.lccs.portal.requestfunds.form;
 
 import org.springframework.beans.factory.annotation.Configurable;
 

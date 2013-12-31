@@ -11,9 +11,9 @@
 			<portlet-mode>view</portlet-mode>
 		</supports>
 		<portlet-info>
-			<title>Online Application</title>
-			<short-title>Online Application</short-title>
-			<keywords>Online Application</keywords>
+			<title>Request For Funds</title>
+			<short-title>Request For Funds</short-title>
+			<keywords>Request For Funds</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>

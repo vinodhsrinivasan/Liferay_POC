@@ -27,7 +27,8 @@ public class RequestFundsDTOConverter implements Converter<RequestFundsDTO, Requ
     @Override
     public RequestFundsForm convert(RequestFundsDTO dto) {
         Preconditions.checkNotNull(dto);
-        return new RequestFundsForm(dto.getSacwisId(),dto.getSacwisName(),dto.getSacwisApproverName());
+        //return new RequestFundsForm(dto.getSacwisId(),dto.getSacwisName(),dto.getSacwisApproverName());
+		return null;
     }
    
 }

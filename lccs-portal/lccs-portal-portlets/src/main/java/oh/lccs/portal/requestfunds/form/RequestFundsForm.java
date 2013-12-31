@@ -1,9 +1,9 @@
-package oh.lccs.portal.requestfunds.portlet;
+package oh.lccs.portal.requestfunds.form;
 
 import java.util.List;
 
-import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
-import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;
+/*import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
+import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;*/
 
 import org.springframework.beans.factory.annotation.Configurable;
 
@@ -18,8 +18,8 @@ public class RequestFundsForm {
 	private String workerPhoneNumber;
 	
 	//Check Person for which request is being made section
-	private List<RequestTypeDTO> requestTypes;
-	private List<RequestingPersonDTO> requestingForPeople;
+	//private List<RequestTypeDTO> requestTypes;
+	//private List<RequestingPersonDTO> requestingForPeople;
 	
 	//Information filed in by Caseworker for approval
 	private String personRespForPurchase;
@@ -65,7 +65,7 @@ public class RequestFundsForm {
 	public void setWorkerPhoneNumber(String workerPhoneNumber) {
 		this.workerPhoneNumber = workerPhoneNumber;
 	}
-	public List<RequestTypeDTO> getRequestTypes() {
+	/*public List<RequestTypeDTO> getRequestTypes() {
 		return requestTypes;
 	}
 	public void setRequestTypes(List<RequestTypeDTO> requestTypes) {
@@ -76,7 +76,7 @@ public class RequestFundsForm {
 	}
 	public void setRequestingForPeople(List<RequestingPersonDTO> requestingForPeople) {
 		this.requestingForPeople = requestingForPeople;
-	}
+	}*/
 	public String getPersonRespForPurchase() {
 		return personRespForPurchase;
 	}

@@ -2,6 +2,8 @@ package oh.lccs.portal.requestfunds.portlet;
 
 import oh.lccs.portal.LucasAnnotationConstants;
 import oh.lccs.portal.requestfunds.dto.RequestFundsSearchDTO;
+import oh.lccs.portal.requestfunds.form.RequestFundsForm;
+import oh.lccs.portal.requestfunds.form.RequestFundsSearchForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 
 
-@RequestMapping("VIEW")
-@Controller
+/*@RequestMapping("VIEW")
+@Controller*/
 public class RequestFundsSearchPortlet {
 
-	
+	/*
 	private static final String SEARCH_RESULT = "sacwis/searchResult";
 	private static final String SEARCH_FORM = "sacwis/searchForm";
 	
@@ -41,5 +43,5 @@ public class RequestFundsSearchPortlet {
 	public RequestFundsForm getCommandObject(){
 		return new RequestFundsForm();
 	}
-
+*/
 }
