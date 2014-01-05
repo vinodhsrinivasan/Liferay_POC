@@ -8,6 +8,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+/**
+ * Represents Mybatis connection factory.
+ * 
+ * @author vinodh.srinivasan@compuware.com
+ *
+ */
 public class ConnectionFactory {
 	
 	private static SqlSessionFactory sessionFactory = loadMapper();

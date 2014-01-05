@@ -5,6 +5,12 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+/**
+ * This object returns List of data objects.
+ * 
+ * @author vinodh.srinivasan@compuware.com
+ *
+ */
 public class MybatisQueryForList {
 
   
