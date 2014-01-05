@@ -1,30 +1,40 @@
-package oh.lccs.portal.requestfunds.service;
+package oh.lccs.portal.requestfunds.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import oh.lccs.portal.requestfunds.dao.RequestFundsDAO;
 import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
 import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;
+import oh.lccs.portal.requestfunds.service.RequestFundsService;
 import oh.lccs.portal.service.constants.LucasServiceConstants;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service(value=LucasServiceConstants.REQUEST_FUNDS_SERVICE)
 public class RequestFundsServiceImpl implements RequestFundsService {
 
+	@Autowired
+	@Qualifier(value=LucasServiceConstants.REQUEST_FUNDS_DAO)
+	private RequestFundsDAO requestFundsDAO;
+	
 	@Override
 	public RequestFundsDTO searchForm(RequestFundsDTO dto) {
-		return mockData();
+		return mockData(dto);
 	}
 	
-	private RequestFundsDTO mockData(){
+	private RequestFundsDTO mockData(RequestFundsDTO dto){
+		
+		String greeting = requestFundsDAO.searchBasedOnSacwisId(dto.getSacwisId());
 		
 		RequestFundsDTO searchResult= new RequestFundsDTO();
 		searchResult.setSacwisId("1234");
 		searchResult.setRequestedDate("01/01/2013");
 		searchResult.setRequestingCaseWorker("Test Requestor");
-		searchResult.setCaseWorker("Test Case Worker");
+		searchResult.setCaseWorker(greeting);
 		searchResult.setWorkerPhoneNumber("(123) 456 - 7890");
 		
 		List<RequestTypeDTO> requestTypes = new ArrayList<RequestTypeDTO>();

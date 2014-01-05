@@ -59,11 +59,12 @@ public class RequestFundsPortlet {
 	 @ResourceMapping(value = SEARCH_RESOURCE_ID)
 	public String loadSearchPage(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsForm ,Model model) {
 		 setMockRequestAttributes(model);
-		 model.addAttribute("caseWorker","Mark Waugh");
+		 //model.addAttribute("caseWorker","Steve Waugh");
 		 RequestFundsDTO dto = new RequestFundsDTO();
 		 dto.setSacwisId(requestFundsForm.getSacwisId());
 		 
 		RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
+		 model.addAttribute("caseWorkerDetailsDTO",searchResult);
 		
 		return CASE_DETAILS;
 	}

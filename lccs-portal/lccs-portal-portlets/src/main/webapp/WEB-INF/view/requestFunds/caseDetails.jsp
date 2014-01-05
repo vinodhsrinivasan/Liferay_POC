@@ -27,7 +27,7 @@
 				</td>
 				<td>
 					<label for="caseWorker">Caseworker:</label> 
-				 	<c:out value="${caseWorker}"></c:out>
+				 	<c:out value="${caseWorkerDetailsDTO.caseWorker}"></c:out>
 				</td>
 				<td>
 					<label for="caseWorkerPhone">Worker Phone:</label> 

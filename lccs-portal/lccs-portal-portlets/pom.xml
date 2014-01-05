@@ -19,18 +19,26 @@
 	<build>
 		<finalName>lccsapp1</finalName>
 		<plugins>
-<!-- 			<plugin> -->
-<!-- 				<groupId>com.liferay.maven.plugins</groupId> -->
-<!-- 				<artifactId>liferay-maven-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir> -->
-<!-- 					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir> -->
-<!-- 					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir> -->
-<!-- 					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir> -->
-<!-- 					<liferayVersion>${liferay.version}</liferayVersion> -->
-<!-- 					<pluginType>portlet</pluginType> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+<!--       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <webappDirectory>\dev\liferay\bundle\liferay-portal-6.1.2-ce-ga3\deploy</webappDirectory>
+        </configuration>
+      </plugin> -->
+<!-- 			<plugin>
+				<groupId>com.liferay.maven.plugins</groupId>
+				<artifactId>liferay-maven-plugin</artifactId>
+				<configuration>
+					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
+					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
+					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
+					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
+					<liferayVersion>${liferay.version}</liferayVersion>
+					<pluginType>portlet</pluginType>
+				</configuration>
+			</plugin> -->
 
 <!-- 			<plugin> Commented by vinodh
 				<artifactId>maven-surefire-plugin</artifactId>

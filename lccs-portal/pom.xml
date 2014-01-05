@@ -243,7 +243,27 @@
 				<version>1</version>
 				<scope>provided</scope>
 			</dependency>
-
+			
+			<!-- MyBatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			
+			<!-- Oracle jdbc - test only -->
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc7</artifactId>
+				<version>11.2.0 </version>
+				<scope>provided</scope>
+			</dependency>
+					
 			<!-- Logging - SLF4J over Log4J - Replace Commons Logging -->
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
