@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import oh.lccs.portal.db.MybatisQueryForList;
-import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
+import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 import oh.lccs.portal.requestfunds.dao.RequestFundsDAO;
 import oh.lccs.portal.service.constants.LucasServiceConstants;
+
+import org.springframework.stereotype.Service;
 
 /**
  * Represents the DATA layer for the RequestFunds.
@@ -30,9 +30,9 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 		List<Map<String, Object>> userInfo = new MybatisQueryForList().perform(FUNDS_REQUEST_MAPPER, parameters );
 		System.out.println(userInfo);
 		if(userInfo!= null && !userInfo.isEmpty()){
-			CaseDetails caseDetails= (CaseDetails) userInfo.get(0);
-			if(caseDetails!= null){
-			return caseDetails.getCaseId().toString();
+			CaseParticipant caseParticipant= (CaseParticipant) userInfo.get(0);
+			if(caseParticipant!= null){
+			return caseParticipant.getCaseId().toString();
 			}
 		}
 		

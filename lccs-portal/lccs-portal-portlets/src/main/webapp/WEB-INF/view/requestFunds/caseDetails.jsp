@@ -80,7 +80,7 @@
 		  <tr>
 		  <% int rowCount=0; %>
 		    
-		     <c:forEach var="requestType" items="${SACWIS_SEARCH_RESULT.requestTypes}">
+		     <c:forEach var="requestType" items="${SACWIS_SEARCH_RESULT.requestTypeCollection}">
 		     <c:choose>
 		        <c:when test="${rowCount ne 4}">
 		        <td>
@@ -105,7 +105,7 @@
 		  		Requesting for *: (select atleast one option)
 		  	</td>
 		  </tr>		  
-		   <c:forEach var="requestingForPeople" items="${SACWIS_SEARCH_RESULT.requestingForPeople}">
+		   <c:forEach var="requestingForPeople" items="${SACWIS_SEARCH_RESULT.caseParticipantsCollection}">
 			  <tr>
 				  <td>
 				   	<form:checkbox path="requestingForPeople" value="requestingForPeople.requestingPersonCheckbox" />
