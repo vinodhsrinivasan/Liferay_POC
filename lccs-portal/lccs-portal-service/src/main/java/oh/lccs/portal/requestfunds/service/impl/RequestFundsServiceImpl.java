@@ -1,12 +1,14 @@
 package oh.lccs.portal.requestfunds.service.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
+import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 import oh.lccs.portal.requestfunds.dao.RequestFundsDAO;
 import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
-import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
-import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;
 import oh.lccs.portal.requestfunds.service.RequestFundsService;
 import oh.lccs.portal.service.constants.LucasServiceConstants;
 
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Service(value=LucasServiceConstants.REQUEST_FUNDS_SERVICE)
 public class RequestFundsServiceImpl implements RequestFundsService {
+	
 
 	@Autowired
 	@Qualifier(value=LucasServiceConstants.REQUEST_FUNDS_DAO)
@@ -27,90 +30,56 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 	}
 	
 	private RequestFundsDTO mockData(RequestFundsDTO dto){
-		
-		String greeting = requestFundsDAO.searchBasedOnSacwisId(dto.getSacwisId());
-		
 		RequestFundsDTO searchResult= new RequestFundsDTO();
+		List<Map<String, Object>> caseParticipantsColl = requestFundsDAO.searchBasedOnSacwisId(dto.getSacwisId());
+		List<Map<String, Object>> caseDetailsColl = requestFundsDAO.retrieveCaseDetails(dto.getSacwisId());
+		if(caseDetailsColl != null && caseDetailsColl.size()> 0){
+			CaseDetails caseDetail= (CaseDetails) caseDetailsColl.get(0);
+			searchResult.setCaseName(caseDetail.getCaseName());
+			searchResult.setCaseWorker(caseDetail.getCaseWorker());
+		}
 		searchResult.setSacwisId("1234");
+		if(dto.getSacwisId() != null){
+			searchResult.setSacwisId(dto.getSacwisId());	
+		}
 		searchResult.setRequestedDate("01/01/2013");
 		searchResult.setRequestingCaseWorker("Test Requestor");
-		searchResult.setCaseWorker(greeting);
 		searchResult.setWorkerPhoneNumber("(123) 456 - 7890");
-		
-		List<RequestTypeDTO> requestTypes = new ArrayList<RequestTypeDTO>();
-		
-		RequestTypeDTO reqdto1 = new RequestTypeDTO();
-		reqdto1.setRequestType("Donation");
-		reqdto1.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto1);
-		
-		RequestTypeDTO reqdto2 = new RequestTypeDTO();
-		reqdto2.setRequestType("Preplacement Prevention");
-		reqdto2.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto2);
-		
-		RequestTypeDTO reqdto3 = new RequestTypeDTO();
-		reqdto3.setRequestType("Aftercare Independence");
-		reqdto3.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto3);
-		
-		RequestTypeDTO reqdto4 = new RequestTypeDTO();
-		reqdto4.setRequestType("Kinship Care");
-		reqdto4.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto4);
-		
-		RequestTypeDTO reqdto5 = new RequestTypeDTO();
-		reqdto5.setRequestType("Operating");
-		reqdto5.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto5);
-		
-		RequestTypeDTO reqdto6 = new RequestTypeDTO();
-		reqdto6.setRequestType("Family Reunification");
-		reqdto6.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto6);
-		
-//		RequestTypeDTO reqdto7 = new RequestTypeDTO();
-//		reqdto7.setRequestType("TANF/Child Welfare");
-//		reqdto7.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-//		requestTypes.add(reqdto7);
-		
-		RequestTypeDTO reqdto8 = new RequestTypeDTO();
-		reqdto8.setRequestType("Alternative Response");
-		reqdto8.setRequestTypeCheckBox(LucasServiceConstants.CHECKBOX_OFF);
-		requestTypes.add(reqdto8);
-
-		searchResult.setRequestTypes(requestTypes);
-		
-		List<RequestingPersonDTO> requestingPeople = new ArrayList<RequestingPersonDTO>();
-		RequestingPersonDTO dto1 = new RequestingPersonDTO();
-		dto1.setPersonFullName("Test User 1");
-		dto1.setDob("01/01/2014");
-		dto1.setSacwisId("1234");
-		dto1.setType("Natural Parent");
-		dto1.setRequestingPersonCheckbox(LucasServiceConstants.CHECKBOX_ON);
-		requestingPeople.add(dto1);
-		
-		RequestingPersonDTO dto2 = new RequestingPersonDTO();
-		dto2.setPersonFullName("Test User 2");
-		dto2.setDob("01/01/2014");
-		dto2.setSacwisId("5678");
-		dto2.setType("Child");
-		dto1.setRequestingPersonCheckbox(LucasServiceConstants.CHECKBOX_ON);
-		requestingPeople.add(dto2);
-		
-		searchResult.setRequestingForPeople(requestingPeople);
-		
 		searchResult.setPersonRespForPurchase("Test Purchaser");
 		searchResult.setRequestPurpose("To purchase office supplies");
 		searchResult.setOtherCommResContacted("Contacted the manager");
 		searchResult.setTotalAmtRequested("200.00");
 		searchResult.setDateRequired("01/01/2014");
 		searchResult.setFundMode("Voucher");
-		searchResult.setFundDeliveryType("PICKEDUP");
+		searchResult.setFundDeliveryType("furniture");
 		searchResult.setPaymentMadeFor("Test Manager");
 		searchResult.setOtherInstructions("Please process the payment");
 		searchResult.setBudgetCenter("JHJHJH-8989");
 		searchResult.setLineItem("21212");
+		
+		searchResult.setDonation(LucasServiceConstants.CHECKBOX_OFF);
+		searchResult.setPrePlacement(LucasServiceConstants.CHECKBOX_OFF);
+		searchResult.setAfterCareIndependence(LucasServiceConstants.CHECKBOX_ON);
+		searchResult.setKinshipCare(LucasServiceConstants.CHECKBOX_OFF);
+		searchResult.setOperating(LucasServiceConstants.CHECKBOX_OFF);
+		searchResult.setFamilyReunification(LucasServiceConstants.CHECKBOX_OFF);
+		searchResult.setAlternativeResponse(LucasServiceConstants.CHECKBOX_OFF);
+		
+		searchResult.setRequestType(new String[] {"Donation"});
+
+		
+		List<CaseParticipant> requestingPeople = new ArrayList<CaseParticipant>();
+
+		
+		if(caseParticipantsColl != null && caseParticipantsColl.size()> 0){
+			Iterator<Map<String, Object>> itr = caseParticipantsColl.iterator();
+			while(itr.hasNext()){
+				CaseParticipant cp = (CaseParticipant) itr.next(); 
+				cp.setRequestingPersonCheckbox(LucasServiceConstants.CHECKBOX_ON);
+				requestingPeople.add(cp);
+			}
+			searchResult.setRequestingForPeople(requestingPeople);
+		}
 		
 		return searchResult;
 	}

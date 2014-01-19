@@ -3,9 +3,6 @@ package oh.lccs.portal.db.domain.requestfunds;
 import java.math.BigDecimal;
 import java.util.List;
 
-import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
-import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;
-
 /**
  * This object represents RequestFunds Case details
  * 
@@ -21,6 +18,7 @@ public class CaseDetails {
 	private String requestedDate;
 	private String requestingCaseWorker;
 	private String caseWorker;
+	private String caseName;
 	private String workerPhoneNumber;
 	
 	//Check Person for which request is being made section
@@ -90,6 +88,14 @@ public class CaseDetails {
 
 	public void setCaseWorker(String caseWorker) {
 		this.caseWorker = caseWorker;
+	}
+
+	public String getCaseName() {
+		return caseName;
+	}
+
+	public void setCaseName(String caseName) {
+		this.caseName = caseName;
 	}
 
 	public String getWorkerPhoneNumber() {

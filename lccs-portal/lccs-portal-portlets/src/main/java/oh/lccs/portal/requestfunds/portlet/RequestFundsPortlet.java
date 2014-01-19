@@ -33,6 +33,8 @@ public class RequestFundsPortlet {
 	
 	private static final String FUND_REQUEST_CONFIRMATION = "requestFunds/confirmation";
 	
+	private static final String RECORD_NOT_FOUND = "requestFunds/recordNotFound";
+	
 	/** Credit card application resource ID*/
     private static final String SEARCH_RESOURCE_ID = "searchCaseBasedOnSacwisNumber";
     private static final String FUND_REQUEST_RESOURCE_ID = "fundRequestSubmitURL";
@@ -64,6 +66,9 @@ public class RequestFundsPortlet {
 		 dto.setSacwisId(requestFundsForm.getSacwisId());
 		 
 		RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
+		if(searchResult.getRequestingForPeople() == null || searchResult.getRequestingForPeople().size() == 0){
+			return RECORD_NOT_FOUND;
+		}
 		 model.addAttribute("caseWorkerDetailsDTO",searchResult);
 		
 		return CASE_DETAILS;

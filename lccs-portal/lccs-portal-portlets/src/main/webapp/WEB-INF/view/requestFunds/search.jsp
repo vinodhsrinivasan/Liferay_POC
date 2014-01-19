@@ -40,7 +40,7 @@
 				<tr>
 					<td>
 					<label for="sacwisId">Sacwis ID</label> 
-						<input id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
+						<input type="number" id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
 					</td>
 					<td>
 						<button type="submit" class="btn btn-primary" id="requestFundsSearchFormSubmit">Search</button>
