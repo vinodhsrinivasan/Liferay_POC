@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import oh.lccs.portal.db.MybatisQueryForInsert;
 import oh.lccs.portal.db.MybatisQueryForList;
 import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
+import oh.lccs.portal.db.domain.requestfunds.RequestFund;
 import oh.lccs.portal.requestfunds.dao.RequestFundsDAO;
+import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.service.constants.LucasServiceConstants;
 
 import org.springframework.stereotype.Service;
@@ -23,6 +26,8 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 
 	private static final String FUNDS_REQUEST_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.searchBasedOnSacwisId";
 	private static final String CASE_INFORMATION_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.retrieveCaseDetails";
+	private static final String FUNDS_REQUEST_INSERT_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.insertFundRequest";
+
 
 	@Override
 	public List<Map<String, Object>> searchBasedOnSacwisId(String sacwisId) {
@@ -57,6 +62,14 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public void saveFundRequest(RequestFundsDTO dto) {
+		RequestFund fund = new RequestFund();
+		fund.setName(dto.getCaseWorker());
+		new MybatisQueryForInsert().perform(FUNDS_REQUEST_INSERT_MAPPER, fund);
+		
 	}
 	
 	

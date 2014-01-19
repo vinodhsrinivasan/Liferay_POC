@@ -216,6 +216,14 @@
 				<artifactId>spring-webmvc-portlet</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
+			
+			<!-- For mybatis transactions -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+            
 			<!-- Support for testing Spring applications with tools such as JUnit 
 				and TestNG This artifact is generally always defined with a 'test' scope 
 				for the integration testing framework and unit testing stubs -->
@@ -262,6 +270,19 @@
 				<artifactId>ojdbc7</artifactId>
 				<version>11.2.0 </version>
 				<scope>provided</scope>
+			</dependency>
+			<!-- Mysql jdbc - test only -->
+			<dependency>
+				<groupId>com.mysql</groupId>
+				<artifactId>mysql</artifactId>
+				<version>1.0 </version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- Sqlserver jdbc - test only -->
+			<dependency>
+			  <groupId>com.microsoft.sqlserver</groupId>
+			  <artifactId>sqljdbc4</artifactId>
+			  <version>3.0</version>
 			</dependency>
 					
 			<!-- Logging - SLF4J over Log4J - Replace Commons Logging -->

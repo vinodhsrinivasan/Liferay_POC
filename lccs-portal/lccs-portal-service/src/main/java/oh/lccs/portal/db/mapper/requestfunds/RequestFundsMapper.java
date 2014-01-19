@@ -4,7 +4,9 @@ import java.util.List;
 
 import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
+import oh.lccs.portal.db.domain.requestfunds.RequestFund;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -51,5 +53,8 @@ public interface RequestFundsMapper {
 	
 	@Select(CASE_SQL)
 	public List<CaseDetails> retrieveCaseDetails(@Param("caseId") String caseId);
+	
+	@Insert("INSERT INTO LCCS_REQUEST_FUNDS (name) VALUES(#{name})")
+	public int insertFundRequest(RequestFund requestFund);
 
 }
