@@ -6,7 +6,6 @@
 <portlet:resourceURL var="searchCaseBasedOnSacwisNumber" id="searchCaseBasedOnSacwisNumber" ></portlet:resourceURL>
 
 <div class="bootstrap3" id="lccs-request-for-funds-body">
-	<h2 class="lccs-request-for-funds">Request For Funds</h2>
 	<div id="server-form-validation-errors"><!-- server form validation errors div --></div>
 	<div id="form-validation-errors"><ul><!-- errors --></ul></div>
 	

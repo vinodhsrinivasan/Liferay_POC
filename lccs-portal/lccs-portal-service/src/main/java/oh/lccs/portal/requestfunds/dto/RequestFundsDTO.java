@@ -8,6 +8,7 @@ import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 
 public class RequestFundsDTO {
 	
+	
 	//Header Variables
 	private String sacwisId;
 	private String requestedDate;
@@ -26,8 +27,6 @@ public class RequestFundsDTO {
 	private String alternativeResponse;
 	
 	private String[] requestType;
-	
-	
 	
 	//Check Person for which request is being made section
 //	private List<RequestTypeDTO> requestTypes;
@@ -48,8 +47,55 @@ public class RequestFundsDTO {
 	private String lineItem;
 	
 	
-	
+	/**
+	 * 
+	 */
+	public RequestFundsDTO() {
+//		super();
+	}
 
+	public RequestFundsDTO(String sacwisId, String requestedDate,
+			String requestingCaseWorker, String caseWorker, String caseName,
+			String workerPhoneNumber, String donation, String prePlacement,
+			String afterCareIndependence, String kinshipCare, String operating,
+			String familyReunification, String alternativeResponse,
+			String[] requestType, List<CaseParticipant> requestingForPeople,
+			String personRespForPurchase, String requestPurpose,
+			String otherCommResContacted, String totalAmtRequested,
+			String dateRequired, String fundMode, String fundDeliveryType,
+			String paymentMadeFor, String otherInstructions,
+			String furnitureDeliveryAddress, String budgetCenter,
+			String lineItem) {
+		super();
+		this.sacwisId = sacwisId;
+		this.requestedDate = requestedDate;
+		this.requestingCaseWorker = requestingCaseWorker;
+		this.caseWorker = caseWorker;
+		this.caseName = caseName;
+		this.workerPhoneNumber = workerPhoneNumber;
+		this.donation = donation;
+		this.prePlacement = prePlacement;
+		this.afterCareIndependence = afterCareIndependence;
+		this.kinshipCare = kinshipCare;
+		this.operating = operating;
+		this.familyReunification = familyReunification;
+		this.alternativeResponse = alternativeResponse;
+		this.requestType = requestType;
+		this.requestingForPeople = requestingForPeople;
+		this.personRespForPurchase = personRespForPurchase;
+		this.requestPurpose = requestPurpose;
+		this.otherCommResContacted = otherCommResContacted;
+		this.totalAmtRequested = totalAmtRequested;
+		this.dateRequired = dateRequired;
+		this.fundMode = fundMode;
+		this.fundDeliveryType = fundDeliveryType;
+		this.paymentMadeFor = paymentMadeFor;
+		this.otherInstructions = otherInstructions;
+		this.furnitureDeliveryAddress = furnitureDeliveryAddress;
+		this.budgetCenter = budgetCenter;
+		this.lineItem = lineItem;
+	}
+	
 	public String getSacwisId() {
 		return sacwisId;
 	}

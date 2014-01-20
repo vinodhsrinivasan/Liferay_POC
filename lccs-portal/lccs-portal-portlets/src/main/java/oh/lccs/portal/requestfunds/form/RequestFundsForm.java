@@ -5,6 +5,10 @@ import java.util.List;
 /*import oh.lccs.portal.requestfunds.dto.RequestTypeDTO;
 import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;*/
 
+
+
+import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
+
 import org.springframework.beans.factory.annotation.Configurable;
 
 @Configurable
@@ -15,11 +19,23 @@ public class RequestFundsForm {
 	private String requestedDate;
 	private String requestingCaseWorker;
 	private String caseWorker;
+	private String caseName;
 	private String workerPhoneNumber;
 	
+	//Request Types
+	private String donation;
+	private String prePlacement;
+	private String afterCareIndependence;
+	private String kinshipCare;
+	private String operating;
+	private String familyReunification;
+	private String alternativeResponse;
+	
+	private String[] requestType;
+	
 	//Check Person for which request is being made section
-	//private List<RequestTypeDTO> requestTypes;
-	//private List<RequestingPersonDTO> requestingForPeople;
+//	private List<RequestTypeDTO> requestTypes;
+	private List<CaseParticipant> requestingForPeople;
 	
 	//Information filed in by Caseworker for approval
 	private String personRespForPurchase;
@@ -34,7 +50,86 @@ public class RequestFundsForm {
 	private String furnitureDeliveryAddress;
 	private String budgetCenter;
 	private String lineItem;
+	
+	
 
+	/**
+	 * 
+	 */
+	public RequestFundsForm() {
+//		super();
+		// TODO Auto-generated constructor stub
+	}
+	/**
+	 * @param sacwisId
+	 * @param requestedDate
+	 * @param requestingCaseWorker
+	 * @param caseWorker
+	 * @param caseName
+	 * @param workerPhoneNumber
+	 * @param donation
+	 * @param prePlacement
+	 * @param afterCareIndependence
+	 * @param kinshipCare
+	 * @param operating
+	 * @param familyReunification
+	 * @param alternativeResponse
+	 * @param requestType
+	 * @param requestingForPeople
+	 * @param personRespForPurchase
+	 * @param requestPurpose
+	 * @param otherCommResContacted
+	 * @param totalAmtRequested
+	 * @param dateRequired
+	 * @param fundMode
+	 * @param fundDeliveryType
+	 * @param paymentMadeFor
+	 * @param otherInstructions
+	 * @param furnitureDeliveryAddress
+	 * @param budgetCenter
+	 * @param lineItem
+	 */
+	public RequestFundsForm(String sacwisId, String requestedDate,
+			String requestingCaseWorker, String caseWorker, String caseName,
+			String workerPhoneNumber, String donation, String prePlacement,
+			String afterCareIndependence, String kinshipCare, String operating,
+			String familyReunification, String alternativeResponse,
+			String[] requestType, List<CaseParticipant> requestingForPeople,
+			String personRespForPurchase, String requestPurpose,
+			String otherCommResContacted, String totalAmtRequested,
+			String dateRequired, String fundMode, String fundDeliveryType,
+			String paymentMadeFor, String otherInstructions,
+			String furnitureDeliveryAddress, String budgetCenter,
+			String lineItem) {
+		super();
+		this.sacwisId = sacwisId;
+		this.requestedDate = requestedDate;
+		this.requestingCaseWorker = requestingCaseWorker;
+		this.caseWorker = caseWorker;
+		this.caseName = caseName;
+		this.workerPhoneNumber = workerPhoneNumber;
+		this.donation = donation;
+		this.prePlacement = prePlacement;
+		this.afterCareIndependence = afterCareIndependence;
+		this.kinshipCare = kinshipCare;
+		this.operating = operating;
+		this.familyReunification = familyReunification;
+		this.alternativeResponse = alternativeResponse;
+		this.requestType = requestType;
+		this.requestingForPeople = requestingForPeople;
+		this.personRespForPurchase = personRespForPurchase;
+		this.requestPurpose = requestPurpose;
+		this.otherCommResContacted = otherCommResContacted;
+		this.totalAmtRequested = totalAmtRequested;
+		this.dateRequired = dateRequired;
+		this.fundMode = fundMode;
+		this.fundDeliveryType = fundDeliveryType;
+		this.paymentMadeFor = paymentMadeFor;
+		this.otherInstructions = otherInstructions;
+		this.furnitureDeliveryAddress = furnitureDeliveryAddress;
+		this.budgetCenter = budgetCenter;
+		this.lineItem = lineItem;
+	}
 	public String getSacwisId() {
 		return sacwisId;
 	}
@@ -148,6 +243,66 @@ public class RequestFundsForm {
 	}
 	public void setLineItem(String lineItem) {
 		this.lineItem = lineItem;
+	}
+	public String getCaseName() {
+		return caseName;
+	}
+	public void setCaseName(String caseName) {
+		this.caseName = caseName;
+	}
+	public String getDonation() {
+		return donation;
+	}
+	public void setDonation(String donation) {
+		this.donation = donation;
+	}
+	public String getPrePlacement() {
+		return prePlacement;
+	}
+	public void setPrePlacement(String prePlacement) {
+		this.prePlacement = prePlacement;
+	}
+	public String getAfterCareIndependence() {
+		return afterCareIndependence;
+	}
+	public void setAfterCareIndependence(String afterCareIndependence) {
+		this.afterCareIndependence = afterCareIndependence;
+	}
+	public String getKinshipCare() {
+		return kinshipCare;
+	}
+	public void setKinshipCare(String kinshipCare) {
+		this.kinshipCare = kinshipCare;
+	}
+	public String getOperating() {
+		return operating;
+	}
+	public void setOperating(String operating) {
+		this.operating = operating;
+	}
+	public String getFamilyReunification() {
+		return familyReunification;
+	}
+	public void setFamilyReunification(String familyReunification) {
+		this.familyReunification = familyReunification;
+	}
+	public String getAlternativeResponse() {
+		return alternativeResponse;
+	}
+	public void setAlternativeResponse(String alternativeResponse) {
+		this.alternativeResponse = alternativeResponse;
+	}
+	public String[] getRequestType() {
+		return requestType;
+	}
+	public void setRequestType(String[] requestType) {
+		this.requestType = requestType;
+	}
+	public List<CaseParticipant> getRequestingForPeople() {
+		return requestingForPeople;
+	}
+	public void setRequestingForPeople(List<CaseParticipant> requestingForPeople) {
+		this.requestingForPeople = requestingForPeople;
 	}
 
 

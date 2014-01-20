@@ -52,6 +52,7 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 		searchResult.setDateRequired("01/01/2014");
 		searchResult.setFundMode("Voucher");
 		searchResult.setFundDeliveryType("furniture");
+		searchResult.setFurnitureDeliveryAddress("123 Test Columbus OH 12345");
 		searchResult.setPaymentMadeFor("Test Manager");
 		searchResult.setOtherInstructions("Please process the payment");
 		searchResult.setBudgetCenter("JHJHJH-8989");
@@ -66,8 +67,6 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 		searchResult.setAlternativeResponse(LucasServiceConstants.CHECKBOX_OFF);
 		
 		searchResult.setRequestType(new String[] {"Donation"});
-
-		
 		List<CaseParticipant> requestingPeople = new ArrayList<CaseParticipant>();
 
 		

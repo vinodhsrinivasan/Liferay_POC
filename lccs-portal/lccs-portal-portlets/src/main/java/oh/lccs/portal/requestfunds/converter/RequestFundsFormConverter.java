@@ -12,7 +12,7 @@ import com.google.common.base.Preconditions;
 
 /**
  * Class used to convert a {@code RequestFundsForm} instance to an
- * {@code RequestFundsDTO} instance. 
+ * {@code RequestFundsrequestFundsForm} instance. 
  * 
  */
 @Component
@@ -27,8 +27,20 @@ public class RequestFundsFormConverter implements Converter<RequestFundsForm, Re
     @Override
     public RequestFundsDTO convert(RequestFundsForm requestFundsForm) {
         Preconditions.checkNotNull(requestFundsForm);
-        //return new RequestFundsDTO(requestFundsForm.getSacwisId(),requestFundsForm.getSacwisName(),requestFundsForm.getSacwisApproverName());
-		return null;
+        return new RequestFundsDTO(requestFundsForm.getSacwisId(),requestFundsForm.getRequestedDate(),
+        		requestFundsForm.getRequestingCaseWorker(),requestFundsForm.getCaseWorker(), requestFundsForm.getCaseName(),
+        		requestFundsForm.getWorkerPhoneNumber(), requestFundsForm.getDonation(), requestFundsForm.getPrePlacement(),
+        		requestFundsForm.getAfterCareIndependence(), requestFundsForm.getKinshipCare(), requestFundsForm.getOperating(),
+        		requestFundsForm.getFamilyReunification(), requestFundsForm.getAlternativeResponse(),
+        		requestFundsForm.getRequestType(), requestFundsForm.getRequestingForPeople(),
+        		requestFundsForm.getPersonRespForPurchase(), requestFundsForm.getRequestPurpose(),
+        		requestFundsForm.getOtherCommResContacted(), requestFundsForm.getTotalAmtRequested(),
+        		requestFundsForm.getDateRequired(), requestFundsForm.getFundMode(), requestFundsForm.getFundDeliveryType(),
+        		requestFundsForm.getPaymentMadeFor(), requestFundsForm.getOtherInstructions(), 
+        		requestFundsForm.getFurnitureDeliveryAddress(), requestFundsForm.getBudgetCenter(), 
+        		requestFundsForm.getLineItem());
+        
+//        return null;
     }
    
 }

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import oh.lccs.portal.LucasAnnotationConstants;
 import oh.lccs.portal.portlet.springmvc.extension.ResourceRequestEntity;
+import oh.lccs.portal.requestfunds.converter.RequestFundsDTOConverter;
 import oh.lccs.portal.requestfunds.converter.RequestFundsFormConverter;
 import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.requestfunds.form.RequestFundsForm;
@@ -49,6 +50,9 @@ public class RequestFundsPortlet {
 	@Autowired
 	RequestFundsFormConverter fundsFormConverter;
 	
+	@Autowired
+	RequestFundsDTOConverter fundsDTOConverter;
+	
 	@RenderMapping
 	public String loadSearchPage(Model model) {
 		
@@ -66,6 +70,7 @@ public class RequestFundsPortlet {
 		 dto.setSacwisId(requestFundsForm.getSacwisId());
 		 
 		RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
+//		RequestFundsForm resultForm = fundsDTOConverter.convert(dto);
 		if(searchResult.getRequestingForPeople() == null || searchResult.getRequestingForPeople().size() == 0){
 			return RECORD_NOT_FOUND;
 		}

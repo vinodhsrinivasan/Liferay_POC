@@ -16,14 +16,21 @@
         }*/
         
         fieldset {
-            border: 2px solid #bababa;
-            background-color: #ffffff;
+        	font-family: Verdana, Arial,  sans-serif;
+			font-size: small;
+			font-weight: normal;
+			border: 1px solid #999999;
+			padding: 4px;
+			margin: 5px;            
         }
         
         legend {
-            font-size: 1em;
-            font-weight: bold;
-        }
+			/* Default style of Legend of Fieldset.  Acts as a catch-all style if programmer "forgets" to attach style to element. */
+			font-size: 50%;
+			color: #888888;
+			background-color: transparent;
+			font-weight: normal;
+			}
         
         a {
             color: #dc7b0b;
@@ -207,100 +214,98 @@
 <div class="tab-content-container form-group" id="lccs-request-for-funds-case-worker">
 
 <fieldset>
-            <legend>Caseworker Details</legend>		
-			<table>
-			
-			
+     <legend>Caseworker Details</legend>		
+		<table>
 			<tr>
-			<td>
-				<label for="sacwisId">Sacwis ID</label>
-				<c:out value="${caseWorkerDetailsDTO.sacwisId}"></c:out>
-			</td>
-			<td>
-				&nbsp;
-			</td>
-			<td>
+				<td>
+					<label for="sacwisId">Sacwis ID</label>
+					<c:out value="${caseWorkerDetailsDTO.sacwisId}"></c:out>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+				<td>
 					<label for="requestDate">Date:</label> 
 				 	<c:out value="${requestedDate}"></c:out>
 				</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="requestingCaseWorker">Caseworker Requesting:</label>
-				<c:out value="${caseWorkerDetailsDTO.requestingCaseWorker}"></c:out>
-			</td>
-			
-			<td>
-				<label for="caseworker">Caseworker:</label> 
-				<c:out value="${caseWorkerDetailsDTO.caseWorker}"></c:out>
-			</td>
-			<td>
-				<label for="workerPhoneNumber">Worker Phone:</label> 
-				<c:out value="${caseWorkerDetailsDTO.workerPhoneNumber}"></c:out>
+			</tr>
+			<tr>
+				<td>
+					<label for="requestingCaseWorker">Caseworker Requesting:</label>
+					<c:out value="${caseWorkerDetailsDTO.requestingCaseWorker}"></c:out>
+				</td>
 				
-			</td>
-		</tr>
-			</table>
-			</fieldset>
+				<td>
+					<label for="caseworker">Caseworker:</label> 
+					<c:out value="${caseWorkerDetailsDTO.caseWorker}"></c:out>
+				</td>
+				<td>
+					<label for="workerPhoneNumber">Worker Phone:</label> 
+					<c:out value="${caseWorkerDetailsDTO.workerPhoneNumber}"></c:out>
+					
+				</td>
+			</tr>
+		</table>
+</fieldset>
 		</div>	<!-- End: lccs-request-for-funds-case-worker -->
 <br/> <!-- Seperator -->
 
-<div id="lccs-request-for-funds-form-content" class="tab-content-container">
+
 	
 	<form name="requestFundsCaseDetailsForm" id="requestFundsCaseDetailsForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="#">
- 			
+<div id="lccs-request-for-funds-form-content" class="tab-content-container"> 			
 <fieldset>
-            <legend>Check Person for which this request is being made</legend>		
-	<table>
-		<tr>
-		<td colspan="4">
-		<label> Type of Request*: (select atleast one option) </label>
-		</td>
-		</tr>	
+    <legend>Check Person for which this request is being made</legend>		
+		<table>
+			<tr>
+				<td colspan="4">
+					<label> Type of Request*: (select atleast one option) </label>
+				</td>
+			</tr>	
 			
-		<tr>
-			<td>
-				<input type="checkbox"  name="${caseWorkerDetailsDTO.requestType}"  value = "Donation" id="Donation" />
-				Donation
-			</td>
-			<td>
-				<input type="checkbox" value="${caseWorkerDetailsDTO.prePlacement}" id="prePlacement" />
-				Preplacement Prevention
-			</td>
-			<td>
-				<input type="checkbox" name="${caseWorkerDetailsDTO.requestType}"  value = "afterCareIndependence" id="afterCareIndependence" />
-				Aftercare Independence
-			</td>
-			<td>
-				<input type="checkbox" value="${caseWorkerDetailsDTO.kinshipCare}" id="kinshipCare" />
-				Kinship Care
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input type="checkbox" value="${caseWorkerDetailsDTO.operating}" id="operating" />
-				Operating
-			</td>
-			<td>
-				<input type="checkbox" value="${caseWorkerDetailsDTO.familyReunification}" id="familyReunification" />
-				Family Reunification
-			</td>
-			<td>
-				<input type="checkbox"  value="${caseWorkerDetailsDTO.alternativeResponse}" id="alternativeResponse" />
-				Alternative Response
-			</td>
-			<td>
-				&nbsp;
-			</td>
-		</tr>
+			<tr>
+				<td>
+					<input type="checkbox"  name="${caseWorkerDetailsDTO.requestType}"  value = "Donation" id="Donation" />
+					Donation
+				</td>
+				<td>
+					<input type="checkbox" value="${caseWorkerDetailsDTO.prePlacement}" id="prePlacement" />
+					Preplacement Prevention
+				</td>
+				<td>
+					<input type="checkbox" name="${caseWorkerDetailsDTO.requestType}"  value = "afterCareIndependence" id="afterCareIndependence" />
+					Aftercare Independence
+				</td>
+				<td>
+					<input type="checkbox" value="${caseWorkerDetailsDTO.kinshipCare}" id="kinshipCare" />
+					Kinship Care
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" value="${caseWorkerDetailsDTO.operating}" id="operating" />
+					Operating
+				</td>
+				<td>
+					<input type="checkbox" value="${caseWorkerDetailsDTO.familyReunification}" id="familyReunification" />
+					Family Reunification
+				</td>
+				<td>
+					<input type="checkbox"  value="${caseWorkerDetailsDTO.alternativeResponse}" id="alternativeResponse" />
+					Alternative Response
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
 		</table>
 		<table>
-		<tr>
-		<td colspan="4">
-			<label> Requesting for*: (select atleast one option) </label>
-		</td>
-		</tr>	
-		<c:forEach var="caseParticipant" items="${caseWorkerDetailsDTO.requestingForPeople}">
+			<tr>
+				<td colspan="4">
+					<label> Requesting for*: (select atleast one option) </label>
+				</td>
+			</tr>	
+			<c:forEach var="caseParticipant" items="${caseWorkerDetailsDTO.requestingForPeople}">
 			<c:if test="${not empty caseParticipant.custody || not empty caseParticipant.custody || not empty caseParticipant.custody || not empty caseParticipant.custody}">
 				<tr>
 					
@@ -322,34 +327,33 @@
 					</td>
 				</tr>
 			</c:if>
-		<tr>
-			<td>
-				<input type="checkbox"  name="${caseParticipant.requestingPersonCheckbox}"  value = "requestingPersonCheckbox" id="Donation" />
-				<c:out value="${caseParticipant.personFullName}"></c:out>
-			</td>
-			<td>
-				Client/Sacwis ID: &nbsp;&nbsp;&nbsp;&nbsp;
-				<c:out value="${caseParticipant.sacwisId}"></c:out>
-			</td>
-			<td>
-				DOB&nbsp;&nbsp;&nbsp;&nbsp;
-				<c:out value="${caseParticipant.dob}"></c:out>
-			</td>
-			<td>Type&nbsp;&nbsp;&nbsp;&nbsp;
-				<c:out value="${caseParticipant.type}"></c:out>
-			</td>
-		</tr>
+				<tr>
+					<td>
+						<input type="checkbox"  name="${caseParticipant.requestingPersonCheckbox}"  value = "requestingPersonCheckbox" id="Donation" />
+						<c:out value="${caseParticipant.personFullName}"></c:out>
+					</td>
+					<td>
+						Client/Sacwis ID: &nbsp;&nbsp;&nbsp;&nbsp;
+						<c:out value="${caseParticipant.sacwisId}"></c:out>
+					</td>
+					<td>
+						DOB&nbsp;&nbsp;&nbsp;&nbsp;
+						<c:out value="${caseParticipant.dob}"></c:out>
+					</td>
+					<td>Type&nbsp;&nbsp;&nbsp;&nbsp;
+						<c:out value="${caseParticipant.type}"></c:out>
+					</td>
+				</tr>
 		</c:forEach>
-		
-			
 		</table>
 		</fieldset>
+		</div>
 		<div class="spacerDiv"><img src="images/1x1.gif" alt=""></div>
 		<div class="spacerDiv"><img src="images/1x1.gif" alt=""></div>
-		
+		<div id="lccs-request-for-funds-form-content" class="tab-content-container">
 		<div class="form-group">
 		<fieldset>
-            <legend>Information filled in by Caseworker for approval</legend>		
+        <legend>Information filled in by Caseworker for approval</legend>		
 		<table>
 		  <tr>
 		  	<td>
@@ -364,7 +368,9 @@
 		    	<label for="requestPurpose"><b>Purpose of Request*:</b></label> 
 		    </td>
 		    <td colspan="3">	
-		    	<textarea rows = "5" cols="30"  name="${caseWorkerDetailsDTO.requestPurpose}" required data-msg-required="Purpose of Request is required."></textarea>
+		    	<textarea rows = "5" cols="30"  name="${caseWorkerDetailsDTO.requestPurpose}" required data-msg-required="Purpose of Request is required.">
+		    		${caseWorkerDetailsDTO.requestPurpose}
+		    	</textarea>
 			</td>
 		  </tr>
 		  <tr>		
@@ -386,50 +392,49 @@
 		    	<label for="dateRequired"><b>Date Required*:</b></label> 
 		    </td>
 		    <td>	
-				<input value="${caseWorkerDetailsDTO.dateRequired}" />
+				<input value="${caseWorkerDetailsDTO.dateRequired}" required data-msg-required="Date Required is required." />
 			</td>
 		  </tr>
 		  <tr>
 			  <td>
-			 	 <label for="fundMode">Fund Mode: </label>
-						<select id="fundMode"  name="caseWorkerDetailsDTO.fundMode" class="form-control"  required  data-msg-required="Select the Fund Mode.">
-							<option value="">-- Please Select --</option>
-							<option value="Voucher">Voucher</option>
-							<option value="check">Check</option>
-						</select>
+			 	<label for="fundMode">Fund Mode: </label>
+				<select id="fundMode"  name="caseWorkerDetailsDTO.fundMode" class="form-control"  required  data-msg-required="Select the Fund Mode.">
+					<option value="">-- Please Select --</option>
+					<option value="Voucher">Voucher</option>
+					<option value="check">Check</option>
+				</select>
 			  </td>
 		   	  <td>
 			 	&nbsp;
 			  </td>
 			  <td>
-			 	 <label for="fundDeliveryType">Fund Delivery Type: </label>
-						<select id="fundDeliveryType" name="fundDeliveryType" class="form-control"  required  data-msg-required="Select the Fund Delivery Type.">
-							<option value="">-- Please Select --</option>
-							<option value="toBePickedUp">To be picked up</option>
-							<option value="callUponFundsAvail">Call when funds are</option>
-							<option value="furniture">For Furniture/Applicances</option>
-						</select>
+			 	<label for="fundDeliveryType">Fund Delivery Type: </label>
+				<select id="fundDeliveryType" name="fundDeliveryType" class="form-control"  required  data-msg-required="Select the Fund Delivery Type.">
+					<option value="">-- Please Select --</option>
+					<option value="toBePickedUp">To be picked up</option>
+					<option value="callUponFundsAvail">Call when funds are</option>
+					<option value="furniture">For Furniture/Applicances</option>
+				</select>
 			  </td>
 			   <td>
 			 	&nbsp;
 			  </td>
 		  </tr>
-		 	
-		  
-	     
 		  <tr>
 		  	  <td>
 		  	  	<label for="paymentMadeFor"><b>Made Payable To:*</b></label>
 		  	  </td>
 		  	  <td>
-		  	  	<textarea  name="${caseWorkerDetailsDTO.paymentMadeFor}" rows = "5" cols="30"></textarea>
+		  	  	<textarea  name="${caseWorkerDetailsDTO.paymentMadeFor}" rows = "5" cols="30" required data-msg-required="Made Payable To is required.">${caseWorkerDetailsDTO.paymentMadeFor}</textarea>
 		  	  </td>
 		  	  <td>
 		  	  	<label for="furnitureDeliveryAddress">Furniture/Appliances Delivery to</label>
 		  	  </td>
 		  	  <td>
 			  	  <c:if test="${caseWorkerDetailsDTO.fundDeliveryType eq 'furniture'}">
-			  	  	<textarea  name="furnitureDeliveryAddress" rows = "5" cols="30"></textarea>
+			  	  	<textarea  name="furnitureDeliveryAddress" rows = "5" cols="30">
+			  	  		${caseWorkerDetailsDTO.furnitureDeliveryAddress}
+			  	  	</textarea>
 			  	  </c:if>	
 		  	  </td>
 		  </tr>
@@ -438,7 +443,7 @@
 		  	  	<label for="otherInstructions">Other Instructions:</label>
 		  	  </td>
 		  	  <td rowspan="2">
-		  	  	<textarea  name="${caseWorkerDetailsDTO.otherInstructions}"  rows = "5" cols="30"></textarea>
+		  	  	<textarea  name="${caseWorkerDetailsDTO.otherInstructions}"  rows = "5" cols="30">${caseWorkerDetailsDTO.otherInstructions}</textarea>
 		  	  </td>
 		  	  
 		  	  <td>
@@ -456,12 +461,9 @@
 		  	  	<input value="${caseWorkerDetailsDTO.lineItem}"/>
 		  	  </td>
 		  </tr>
-		 	
-		  
-		  
-		
 		</table>
 		</fieldset>
+		</div>
 		</div>
 		
 		<div class="form-group">
@@ -475,8 +477,6 @@
 		</table>
 		</div>
 		
-		
-		
 	</form>
-</div>
+
 
