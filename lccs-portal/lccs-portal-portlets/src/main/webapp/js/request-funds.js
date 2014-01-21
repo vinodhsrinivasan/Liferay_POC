@@ -64,8 +64,12 @@ var requestFundsSearchObj={
 				});
 				// Put the results in a div
 				posting.success(function(data) {
-					$("#lccs-request-for-funds-main-content").html(data);
-					requestFundsCaseDetailsObj.init();
+					if(requestFundsCommonObj.isInternalError(data) || requestFundsCommonObj.isFormValidationErrors(data)){
+						$("#server-form-validation-errors").html(data);
+					}else {
+						$("#lccs-request-for-funds-main-content").html(data);
+						requestFundsCaseDetailsObj.init();
+					}
 				}).error(function() {
 					alert("Internal Error....");
 				}).always(function() {
@@ -137,5 +141,25 @@ var requestFundsCaseDetailsObj={
 			});
 		}
 	};
+
+var requestFundsCommonObj={
+		isInternalError:function(content) {
+			var validationErrorPath = "<div id=\"server-internal-error\" class=\"tab-content-container\">";
+			var matchResult = content.match(validationErrorPath);
+			if (validationErrorPath == matchResult) {
+				return true;
+			}
+			return false;
+		},
+		isFormValidationErrors:function(content) {
+			var validationErrorPath = "<div id=\"server-validation-error\">";
+			var matchResult = content.match(validationErrorPath);
+			if (validationErrorPath == matchResult) {
+				return true;
+			}
+			return false;
+		}
+};
+
 
 

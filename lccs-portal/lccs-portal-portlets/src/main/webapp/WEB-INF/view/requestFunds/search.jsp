@@ -3,6 +3,38 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html" isELIgnored="false"%>
 
+
+<style type="text/css">
+	.tab-content-container {
+		margin: 0px;
+		position: relative;
+		background-color: #f4f4f4;
+		border: 1px solid #1c5a83;
+		clear: both;
+		/*color: #1c5a83;*/
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 0.85em;
+		}
+		.row {
+			line-height: 3em;
+		}
+		.labelCol, .fieldCol {
+			float: left;
+			padding: 3px 5px;
+			padding-left: 2%;
+		}
+		
+		.required:after {
+			content: " *";
+			color: red;
+		}
+		
+		label {
+		cursor: default;
+		}
+		
+</style>
+
 <portlet:resourceURL var="searchCaseBasedOnSacwisNumber" id="searchCaseBasedOnSacwisNumber" ></portlet:resourceURL>
 
 <div class="bootstrap3" id="lccs-request-for-funds-body">
@@ -12,43 +44,43 @@
 	<div id="lccs-request-for-funds-main-content">
 	
 		<div class="tab-content-container form-group" id="lccs-request-for-funds-case-worker">
-			<table>
-			<tr>
-				<td>
-					<label for="caseWorkerName">Caseworker Requesting:</label> 
-					<c:out value="${requestingCaseWorker}"></c:out>
-				</td>
-				<td>
-					<label for="caseWorkerPhone">Worker Phone:</label> 
-					<c:out value="${workerPhoneNumber}"></c:out>
-				</td>
-				<td>
+			<div class="row">
+				 <div class="labelCol">
+					<label for="caseWorkerName">Caseworker Requesting:</label>
+				 </div>
+				   <div class="fieldCol"><c:out value="${requestingCaseWorker}"></c:out> </div>
+			<!-- </div>
+
+			<div class="row"> -->
+				 <div class="labelCol">
+					<label for="caseWorkerPhone">Worker Phone:</label>
+				 </div>
+				   <div class="fieldCol"><c:out value="${workerPhoneNumber}"></c:out> </div>
+<!-- 			</div>
+			
+			<div class="row"> -->
+				 <div class="labelCol">
 					<label for="requestDate">Date:</label> 
-				 	<c:out value="${requestedDate}"></c:out>
-				</td>
-			</tr>
-			</table>
+				 </div>
+				   <div class="fieldCol"><c:out value="${requestedDate}"></c:out> </div>
+			</div>
 		</div>	<!-- End: lccs-request-for-funds-case-worker -->
 		<br/> <!-- Seperator -->
 		
 		<div id="lccs-request-for-funds-form-content" class="tab-content-container">
 			<form action="#" class="form-inline" role="form" id="requestFundsSearchForm" onsubmit="return false;">
 		
-				<div class="form-group">
-				<table>
-				<tr>
-					<td>
-					<label for="sacwisId">Sacwis ID</label> 
-						<input type="number" id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
-					</td>
-					<td>
-						<button type="submit" class="btn btn-primary" id="requestFundsSearchFormSubmit">Search</button>
-					</td>
-				</tr>
-				
-				</table>
+				<div class="">
+					<div class="row">
+					 	<div class="labelCol"><label for="sacwisId">Sacwis ID</label> </div>
+					 	 <div class="fieldCol">
+					 	 	<input type="text" id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
+					 	 </div>
+					 	 <div class="fieldCol">
+					 	 	<button type="submit" class="btn btn-primary" id="requestFundsSearchFormSubmit">Search</button>
+					 	 </div>
+					</div>
 				</div>
-				
 			</form>
 		</div><!-- End:lccs-request-for-funds-form-content -->
 	</div><!--lccs-request-for-funds-main-content -->

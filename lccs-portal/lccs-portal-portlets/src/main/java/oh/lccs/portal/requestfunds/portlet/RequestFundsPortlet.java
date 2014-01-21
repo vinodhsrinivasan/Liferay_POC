@@ -36,6 +36,8 @@ public class RequestFundsPortlet {
 	
 	private static final String RECORD_NOT_FOUND = "requestFunds/recordNotFound";
 	
+	private static final String SYSTEM_ERROR = "requestFunds/system-error";
+	
 	/** Credit card application resource ID*/
     private static final String SEARCH_RESOURCE_ID = "searchCaseBasedOnSacwisNumber";
     private static final String FUND_REQUEST_RESOURCE_ID = "fundRequestSubmitURL";
@@ -63,20 +65,26 @@ public class RequestFundsPortlet {
 
 
 	 @ResourceMapping(value = SEARCH_RESOURCE_ID)
-	public String loadSearchPage(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsForm ,Model model) {
-		 setMockRequestAttributes(model);
-		 //model.addAttribute("caseWorker","Steve Waugh");
-		 RequestFundsDTO dto = new RequestFundsDTO();
-		 dto.setSacwisId(requestFundsForm.getSacwisId());
+	public String submitSearch(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsForm ,Model model) {
 		 
-		RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
+		 try {
+			 setMockRequestAttributes(model);
+			 //model.addAttribute("caseWorker","Steve Waugh");
+			 RequestFundsDTO dto = new RequestFundsDTO();
+			 dto.setSacwisId(requestFundsForm.getSacwisId());
+			 
+			 RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
 //		RequestFundsForm resultForm = fundsDTOConverter.convert(dto);
-		if(searchResult.getRequestingForPeople() == null || searchResult.getRequestingForPeople().size() == 0){
-			return RECORD_NOT_FOUND;
+			 if(searchResult.getRequestingForPeople() == null || searchResult.getRequestingForPeople().size() == 0){
+				 return RECORD_NOT_FOUND;
+			 }
+			 model.addAttribute("caseWorkerDetailsDTO",searchResult);
+			
+		} catch (Exception e) {
+			return SYSTEM_ERROR;
 		}
-		 model.addAttribute("caseWorkerDetailsDTO",searchResult);
-		
-		return CASE_DETAILS;
+		 
+		 return CASE_DETAILS;
 	}
 	 
 	 @ResourceMapping(value = FUND_REQUEST_RESOURCE_ID)
