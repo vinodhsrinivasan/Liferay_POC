@@ -33,6 +33,13 @@
 		cursor: default;
 		}
 		
+		label.labelStyle{
+			/* Style for all form labels used in the main content area, for non-required fields */
+			font-size: 100%;
+			font-weight: normal;
+			color:  #336699;
+			}
+		
 </style>
 
 <portlet:resourceURL var="searchCaseBasedOnSacwisNumber" id="searchCaseBasedOnSacwisNumber" ></portlet:resourceURL>
@@ -46,21 +53,21 @@
 		<div class="tab-content-container form-group" id="lccs-request-for-funds-case-worker">
 			<div class="row">
 				 <div class="labelCol">
-					<label for="caseWorkerName">Caseworker Requesting:</label>
+					<label class="labelStyle" for="caseWorkerName">Caseworker Requesting:</label>
 				 </div>
 				   <div class="fieldCol"><c:out value="${requestingCaseWorker}"></c:out> </div>
 			<!-- </div>
 
 			<div class="row"> -->
 				 <div class="labelCol">
-					<label for="caseWorkerPhone">Worker Phone:</label>
+					<label class="labelStyle" for="caseWorkerPhone">Worker Phone:</label>
 				 </div>
 				   <div class="fieldCol"><c:out value="${workerPhoneNumber}"></c:out> </div>
 <!-- 			</div>
 			
 			<div class="row"> -->
 				 <div class="labelCol">
-					<label for="requestDate">Date:</label> 
+					<label class="labelStyle" for="requestDate">Date:</label> 
 				 </div>
 				   <div class="fieldCol"><c:out value="${requestedDate}"></c:out> </div>
 			</div>
@@ -72,7 +79,7 @@
 		
 				<div class="">
 					<div class="row">
-					 	<div class="labelCol"><label for="sacwisId">Sacwis ID</label> </div>
+					 	<div class="labelCol"><label class="labelStyle" for="sacwisId">Sacwis ID</label> </div>
 					 	 <div class="fieldCol">
 					 	 	<input type="text" id="sacwisId" name="sacwisId" class="form-control" required data-msg-required="Sacwis ID is required."/>
 					 	 </div>
