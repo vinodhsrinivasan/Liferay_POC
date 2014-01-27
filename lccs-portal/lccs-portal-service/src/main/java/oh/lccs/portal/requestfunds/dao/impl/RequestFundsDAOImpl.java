@@ -6,11 +6,12 @@ import java.util.Map;
 
 import oh.lccs.portal.db.MybatisQueryForInsert;
 import oh.lccs.portal.db.MybatisQueryForList;
+import oh.lccs.portal.db.MybatisQueryForUpdate;
 import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
-import oh.lccs.portal.db.domain.requestfunds.RequestFund;
+import oh.lccs.portal.db.domain.requestfunds.RequestFunds;
+import oh.lccs.portal.db.domain.requestfunds.RequestFundsParticipant;
 import oh.lccs.portal.requestfunds.dao.RequestFundsDAO;
-import oh.lccs.portal.requestfunds.dto.RequestFundsDTO;
 import oh.lccs.portal.service.constants.LucasServiceConstants;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +28,8 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 	private static final String FUNDS_REQUEST_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.searchBasedOnSacwisId";
 	private static final String CASE_INFORMATION_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.retrieveCaseDetails";
 	private static final String FUNDS_REQUEST_INSERT_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.insertFundRequest";
+	private static final String FUNDS_REQUEST_PARTICIPANT_INSERT_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.insertFundRequestParticipant";
+	private static final String FUNDS_REQUEST_UPDATE_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.updateFundRequest";
 
 
 	@Override
@@ -39,7 +42,6 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 		if(userInfo!= null && !userInfo.isEmpty()){
 			CaseParticipant caseParticipant= (CaseParticipant) userInfo.get(0);
 			if(caseParticipant!= null){
-//			return caseParticipant.getCaseId().toString();
 				return userInfo;
 			}
 		}
@@ -57,7 +59,6 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 		if(userInfo!= null && !userInfo.isEmpty()){
 			CaseDetails caseDetails= (CaseDetails) userInfo.get(0);
 			if(caseDetails!= null){
-//			return caseParticipant.getCaseId().toString();
 				return userInfo;
 			}
 		}
@@ -65,11 +66,37 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 	}
 	
 	@Override
-	public void saveFundRequest(RequestFundsDTO dto) {
-		RequestFund fund = new RequestFund();
-		fund.setName(dto.getCaseWorker());
-		new MybatisQueryForInsert().perform(FUNDS_REQUEST_INSERT_MAPPER, fund);
+	public boolean saveFundRequest(RequestFunds requestFunds) {
+		int rowsInserted = 0;
+		rowsInserted = new MybatisQueryForInsert().perform(FUNDS_REQUEST_INSERT_MAPPER, requestFunds);
+		if(rowsInserted > 0){
+			return true;
+		}
+		return false;
 		
+	}
+	
+	@Override
+	public boolean saveFundRequestParticipant(RequestFundsParticipant requestFundsParticipant) {
+		int rowsInserted = 0;
+		rowsInserted = new MybatisQueryForInsert().perform(FUNDS_REQUEST_PARTICIPANT_INSERT_MAPPER, requestFundsParticipant);
+		
+		if(rowsInserted > 0){
+			return true;
+		}
+		return false;
+		
+	}
+
+	@Override
+	public boolean updateFundRequest(RequestFunds requestFunds) {
+		// TODO Auto-generated method stub
+		int rowsUpdated = 0;
+		rowsUpdated = new MybatisQueryForUpdate().perform(FUNDS_REQUEST_UPDATE_MAPPER, requestFunds);
+		if(rowsUpdated > 0){
+			return true;
+		}
+		return false;
 	}
 	
 	

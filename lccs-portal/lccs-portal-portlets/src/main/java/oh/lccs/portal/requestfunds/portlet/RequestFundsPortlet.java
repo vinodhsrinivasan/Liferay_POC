@@ -65,20 +65,21 @@ public class RequestFundsPortlet {
 
 
 	 @ResourceMapping(value = SEARCH_RESOURCE_ID)
-	public String submitSearch(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsForm ,Model model) {
+	public String submitSearch(@ResourceRequestEntity @Valid RequestFundsSearchForm requestFundsSearchForm ,Model model) {
 		 
 		 try {
 			 setMockRequestAttributes(model);
-			 //model.addAttribute("caseWorker","Steve Waugh");
 			 RequestFundsDTO dto = new RequestFundsDTO();
-			 dto.setSacwisId(requestFundsForm.getSacwisId());
+			 dto.setSacwisId(requestFundsSearchForm.getSacwisId());
 			 
 			 RequestFundsDTO searchResult = requestFundsService.searchForm(dto);
-//		RequestFundsForm resultForm = fundsDTOConverter.convert(dto);
+		
 			 if(searchResult.getRequestingForPeople() == null || searchResult.getRequestingForPeople().size() == 0){
 				 return RECORD_NOT_FOUND;
 			 }
-			 model.addAttribute("caseWorkerDetailsDTO",searchResult);
+			 RequestFundsForm resultForm = new RequestFundsForm();
+			 resultForm = fundsDTOConverter.convert(searchResult);
+			 model.addAttribute("caseWorkerDetailsDTO",resultForm);
 			
 		} catch (Exception e) {
 			return SYSTEM_ERROR;
@@ -88,10 +89,28 @@ public class RequestFundsPortlet {
 	}
 	 
 	 @ResourceMapping(value = FUND_REQUEST_RESOURCE_ID)
-	public String fundRequestSubmit(@ResourceRequestEntity @Valid RequestFundsForm form ,Model model) {
-		 	
-			return FUND_REQUEST_CONFIRMATION;
+	public String fundRequestSubmit(@ResourceRequestEntity @Valid RequestFundsForm requestFundsForm ,Model model) {
+		 RequestFundsDTO dto = new RequestFundsDTO();
+		 dto = fundsFormConverter.convert(requestFundsForm);
+		 
+		 boolean saveFlag = requestFundsService.saveData(dto);
+		 if(!saveFlag){
+			return SYSTEM_ERROR;
+		 }
+		return FUND_REQUEST_CONFIRMATION;
 	}
+	 
+	 @ResourceMapping(value = FUND_REQUEST_RESOURCE_ID)
+		public String fundRequestApprove(@ResourceRequestEntity @Valid RequestFundsForm requestFundsForm ,Model model) {
+			 RequestFundsDTO dto = new RequestFundsDTO();
+			 dto = fundsFormConverter.convert(requestFundsForm);
+			 
+			 boolean saveFlag = requestFundsService.updateData(dto);
+			 if(!saveFlag){
+				return SYSTEM_ERROR;
+			 }
+			return FUND_REQUEST_CONFIRMATION;
+		} 
 
 	 private void setMockRequestAttributes(Model model) {
 		 model.addAttribute("requestingCaseWorker","Mark Waugh");

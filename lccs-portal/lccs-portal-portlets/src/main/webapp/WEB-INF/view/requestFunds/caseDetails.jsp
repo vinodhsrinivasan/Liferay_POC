@@ -4,6 +4,8 @@
 <%@ page contentType="text/html" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+
+
 <style type="text/css">
  	.tab-content-container {
 		margin: 0px;
@@ -124,7 +126,7 @@
 
 
 	
-<form name="requestFundsCaseDetailsForm" id="requestFundsCaseDetailsForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="#">
+<form name="requestFundsCaseDetailsForm" id="requestFundsForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="#">
  <fieldset class="fsStyle">
     <legend class="legendStyle">Check Person for which this request is being made</legend>		
 		<div class="tab-content-container">
@@ -259,8 +261,8 @@
 			<div class="col-md-3">
 		    	<label class="labelStyle" for="dateRequired"><b>Date Required*:</b></label> 
 		    </div>
-		    <div class="col-md-3">	
-				<input value="${caseWorkerDetailsDTO.dateRequired}" size="10" maxlength="10" required data-msg-required="Date Required is required." />
+		    <div class="col-md-3">
+				<input value="${caseWorkerDetailsDTO.dateRequired}" class="span2" data-date-format="mm/dd/yy" size="40" maxlength="10" required data-msg-required="Date Required is required." />
 			</div>
 		  </div>
 		  <div class="row">
@@ -313,25 +315,26 @@
 		  	 <div class="col-md-3">
 		  	  	<textarea  name="${caseWorkerDetailsDTO.otherInstructions}"  rows = "5" cols="30">${caseWorkerDetailsDTO.otherInstructions}</textarea>
 		  	  </div>
-		  	  
-		  	 <div class="col-md-3">
-		  	  	<label class="labelStyle" for="budgetCenter">Charge to budget Center: #</label>
-		  	  </div>
-		  	  <div class="col-md-3">
-		  	  	<input value="${caseWorkerDetailsDTO.budgetCenter}"/>
-		  	  </div>
+		  	 <div class="col-md-6"> 
+		  	 	<div class="row">
+				  	 <div class="col-md-6">
+				  	  	<label class="labelStyle" for="budgetCenter">Charge to budget Center: #</label>
+				  	  </div>
+				  	  <div class="col-md-6">
+				  	  	<input value="${caseWorkerDetailsDTO.budgetCenter}"/>
+				  	  </div>
+			  	 </div> 
+			  	 <div class="row">
+				  	   <div class="col-md-6">
+				  	  	<label class="labelStyle" for="lineItem">Line Item#</label>
+				  	  </div>
+				  	   <div class="col-md-6">
+				  	  	<input value="${caseWorkerDetailsDTO.lineItem}"/>
+				  	  </div>
+			  	</div>
+			  </div>	 
 		 </div>
-		 <div class="row">
-		 		<div class="col-md-6">
-		  	   		&nbsp;
-		  	   </div>
-		  	   <div class="col-md-3">
-		  	  	<label class="labelStyle" for="lineItem">Line Item#</label>
-		  	  </div>
-		  	   <div class="col-md-3">
-		  	  	<input value="${caseWorkerDetailsDTO.lineItem}"/>
-		  	  </div>
-		  </div>
+		
 		  </div>
 		</fieldset>
 		

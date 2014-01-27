@@ -25,5 +25,17 @@ public class MybatisQueryForList {
 	  }
 	  return results;
   }
+  
+  public List<Map<String, Object>> performSQLServer(final String daoMethodName, final Map<String, Object> parameters)  {
+	  SqlSession session = null;
+	  List<Map<String, Object>> results = null;
+	  try{
+		session = LCCSConnectionFactory.getSession();
+		results = session.selectList(daoMethodName,parameters);
+	  }finally{
+		  ConnectionFactory.closeSession(session);
+	  }
+	  return results;
+  }
 
 }

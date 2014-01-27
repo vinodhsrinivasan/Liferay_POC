@@ -4,7 +4,8 @@ import java.util.List;
 
 import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
-import oh.lccs.portal.db.domain.requestfunds.RequestFund;
+import oh.lccs.portal.db.domain.requestfunds.RequestFunds;
+import oh.lccs.portal.db.domain.requestfunds.RequestFundsParticipant;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +23,7 @@ public interface RequestFundsMapper {
 	public User searchBasedOnSacwisId(@Param("userId") String userId);*/
 	
 	static final String SQL="select  SACWIS.GET_PERSON_NAME_FORMAT(p.person_id, 'LSFM') as personFullName, to_char(p.birth_date,'MM/DD/yyyy') as dob, p.person_id as sacwisId,cpr.RELATIONSHIP_CODE as type,"+
-            " to_char(lce.CUSTODY_START_DATE,'MM/DD/YYYY') as custodyDate, ag.agency_name as custody ,  ps.PLACEMENT_SETTING_ID as placement, e.IVE_ELIGIBLE_INDICATOR as iveReimbursable, cp.case_id as caseId "+
+            " to_char(lce.CUSTODY_START_DATE,'MM/DD/YYYY') as custodyDate, ag.agency_name as custody, ag.agency_id as custodyAgencyId ,  ps.PLACEMENT_SETTING_ID as placement, e.IVE_ELIGIBLE_INDICATOR as iveReimbursable, cp.case_id as caseId "+
 			" from sacwis.case_participant cp inner join sacwis.case_participant cRefPerson on cp.case_id = cRefPerson.case_id  and cRefPerson.reference_person_flag = 1 "+
 			" inner join sacwis.person p on p.person_id = cp.person_id "+        
 			" left outer join SACWIS.CASE_PARTICIPANT_RELN cpr "+ //only get relationships that are 'to' the case reference person 
@@ -46,7 +47,34 @@ public interface RequestFundsMapper {
 				+ " inner join EMPLOYEE E on E.EMPLOYEE_ID = WA.EMPLOYEE_ID "
 				+ " inner join SECURITY_USER SU on SU.EMPLOYEE_ID = E.EMPLOYEE_ID "
 				+ " inner join CASE_BASE CB on CB.CASE_ID = WI.WORKLOAD_ITEM_ID "
-				+ " where wi.work_item_id = #{caseId} and wi.work_item_type_code = 'CASE'  and su.end_date is null and rownum =1"; 
+				+ " where wi.work_item_id = #{caseId} and wi.work_item_type_code = 'CASE'  and su.end_date is null and rownum =1";
+	
+	static final String INSERT_REQUEST_FUNDS = " INSERT INTO REQUEST_FUNDS(CASE_ID, REQUESTED_DATE, 	CASE_WORKER_REQUESTING,	CASE_WORKER , 	CASE_NAME ,	WORKER_PHONE, DONATION , PREPLACEMENT , "
+			+ " AFTERCARE_INDEPENDENCE, KINSHIP_CARE, OPERATING, FAMILY_REUNIFICATION, ALTERNATIVE_RESPONSE, PERSON_RESPFOR_PURCHASE, REQUEST_PURPOSE, "
+			+ " OTHERCOMMRESCONTACTED, TOTALAMTREQUESTED, DATE_REQUIRED, FUND_MODE, FUND_DELIVERY_TYPE, PAYMENT_MADE_FOR, OTHER_INSTRUCTIONS, "
+			+ "	FURNITURE_DELIVERY_ADDRESS, BUDGET_CENTER, LINEITEM, STATUS_CODE , APPROVER_NAME, APPROVER, CREATED_DATE, CREATED_BY, "
+			+ "	MODIFIED_DATE, MODIFIED_BY) VALUES "
+			+ "	(#{caseId}, #{requestedDate}, #{requestingCaseWorker}, #{caseWorker}, #{caseName}, #{workerPhoneNumber}, #{donation}, #{prePlacement}, #{afterCareIndependence}, #{kinshipCare}, "
+			+ " #{operating}, #{familyReunification}, #{alternativeResponse}, #{personRespForPurchase}, #{requestPurpose}, #{otherCommResContacted}, #{totalAmtRequested}, #{dateRequired}, "
+			+ " #{fundMode}, #{fundDeliveryType} ,#{paymentMadeFor}, #{otherInstructions}, #{furnitureDeliveryAddress}, #{budgetCenter}, #{lineItem} "
+			+ "	, #{statusCode}	, #{approverName}, #{approver}, #{createdDate},#{createdBy},  #{modifiedDate}, #{modifiedby})";
+
+	static final String INSERT_REQUEST_FUNDS_PARTICIPANT ="INSERT INTO  REQUEST_FUNDS_PARTICIPANT(	REQUEST_FUNDS_ID, PERSON_ID, PERSON_NAME, BIRTH_DATE, RELATIONSHIP_TYPE_CODE, "
+			+ "	CUSTODY, CUSTODY_AGENCY_ID,	PLACEMENT_ID, CUSTODY_DATE,	IVE_REIMBURSABLE_FLAG, CREATED_DATE ,CREATED_BY , "
+			+ "	MODIFIED_DATE ,	MODIFIED_BY) VALUES	(#{requestFundsId},#{personId},#{personFullName},#{dob},#{relationShipTypeCode},#{custody},#{custodyAgencyId},#{placement},#{custodyDate},#{caseId} "
+			+ "	,#{iveReimbursable},#{createdDate},#{createdBy},#{modifiedDate},#{modifiedby})";
+
+
+	static final String UPDATE_REQUEST_FUNDS= "UPDATE REQUEST_FUNDS SET CASE_ID =#{caseId} , REQUESTED_DATE=#{requestedDate}, "
+			+ "	CASE_WORKER_REQUESTING=#{requestingCaseWorker},	CASE_WORKER=#{caseWorker} , 	CASE_NAME=#{caseName} ,	WORKER_PHONE=#{workerPhoneNumber}, "
+			+ "	DONATION=#{donation} , PREPLACEMENT=#{prePlacement} , "
+			+ "	AFTERCARE_INDEPENDENCE=#{afterCareIndependence}, KINSHIP_CARE=#{kinshipCare}, OPERATING=#{operating}, FAMILY_REUNIFICATION=#{familyReunification}, "
+			+ "	ALTERNATIVE_RESPONSE=#{alternativeResponse}, PERSON_RESPFOR_PURCHASE=#{personRespForPurchase}, REQUEST_PURPOSE=#{requestPurpose}, "
+			+ "	OTHERCOMMRESCONTACTED=#{otherCommResContacted}, TOTALAMTREQUESTED=#{totalAmtRequested}, DATE_REQUIRED=#{dateRequired}, "
+			+ "	FUND_MODE=#{fundMode}, FUND_DELIVERY_TYPE=#{fundDeliveryType}, PAYMENT_MADE_FOR=#{paymentMadeFor}, OTHER_INSTRUCTIONS=#{otherInstructions}, "
+			+ "	FURNITURE_DELIVERY_ADDRESS=#{furnitureDeliveryAddress}, BUDGET_CENTER=#{budgetCenter}, LINEITEM=#{lineItem}, STATUS_CODE=#{statusCode} ,"
+			+ " APPROVER_NAME= #{approverName}, APPROVER=#{approver}, CREATED_DATE= #{createdDate}, CREATED_BY=#{createdBy}, "
+			+ "	MODIFIED_DATE=#{modifiedDate}, MODIFIED_BY=#{modifiedby}";
 	
 	@Select(SQL)
 	public List<CaseParticipant> searchBasedOnSacwisId(@Param("caseId") String caseId);
@@ -54,7 +82,12 @@ public interface RequestFundsMapper {
 	@Select(CASE_SQL)
 	public List<CaseDetails> retrieveCaseDetails(@Param("caseId") String caseId);
 	
-	@Insert("INSERT INTO LCCS_REQUEST_FUNDS (name) VALUES(#{name})")
-	public int insertFundRequest(RequestFund requestFund);
+	@Insert(INSERT_REQUEST_FUNDS)
+	public int insertFundRequest(RequestFunds requestFund);
 
+	@Insert(INSERT_REQUEST_FUNDS_PARTICIPANT)
+	public int insertFundRequestParticipant(RequestFundsParticipant requestFundsParticipant);
+	
+	@Update(UPDATE_REQUEST_FUNDS)
+	public int updateFundRequest(RequestFunds requestFund);
 }

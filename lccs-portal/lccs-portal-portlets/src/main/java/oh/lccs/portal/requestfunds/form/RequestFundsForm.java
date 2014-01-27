@@ -7,6 +7,7 @@ import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;*/
 
 
 
+
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 
 import org.springframework.beans.factory.annotation.Configurable;
@@ -36,6 +37,7 @@ public class RequestFundsForm {
 	//Check Person for which request is being made section
 //	private List<RequestTypeDTO> requestTypes;
 	private List<CaseParticipant> requestingForPeople;
+	private String[] selectedCaseParticipants;
 	
 	//Information filed in by Caseworker for approval
 	private String personRespForPurchase;
@@ -50,6 +52,17 @@ public class RequestFundsForm {
 	private String furnitureDeliveryAddress;
 	private String budgetCenter;
 	private String lineItem;
+	
+	//Variables for the workflow
+	private String statusCode;
+	private String approverName;
+	private String approver;
+	
+	//Audit Info
+	private String createdBy;
+	private String createdDate;
+	private String modifiedby;
+	private String modifiedDate;
 	
 	
 
@@ -303,6 +316,54 @@ public class RequestFundsForm {
 	}
 	public void setRequestingForPeople(List<CaseParticipant> requestingForPeople) {
 		this.requestingForPeople = requestingForPeople;
+	}
+	public String[] getSelectedCaseParticipants() {
+		return selectedCaseParticipants;
+	}
+	public void setSelectedCaseParticipants(String[] selectedCaseParticipants) {
+		this.selectedCaseParticipants = selectedCaseParticipants;
+	}
+	public String getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(String statusCode) {
+		this.statusCode = statusCode;
+	}
+	public String getApproverName() {
+		return approverName;
+	}
+	public void setApproverName(String approverName) {
+		this.approverName = approverName;
+	}
+	public String getApprover() {
+		return approver;
+	}
+	public void setApprover(String approver) {
+		this.approver = approver;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+	public String getModifiedby() {
+		return modifiedby;
+	}
+	public void setModifiedby(String modifiedby) {
+		this.modifiedby = modifiedby;
+	}
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 
