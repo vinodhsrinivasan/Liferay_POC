@@ -33,12 +33,13 @@ public class RequestFundsDTOConverter implements Converter<RequestFundsDTO, Requ
         		dto.getAfterCareIndependence(), dto.getKinshipCare(), dto.getOperating(),
         		dto.getFamilyReunification(), dto.getAlternativeResponse(),
         		dto.getRequestType(), dto.getRequestingForPeople(),
-        		dto.getPersonRespForPurchase(), dto.getRequestPurpose(),
+        		dto.getSelectedCaseParticipants(), dto.getPersonRespForPurchase(), dto.getRequestPurpose(),
         		dto.getOtherCommResContacted(), dto.getTotalAmtRequested(),
         		dto.getDateRequired(), dto.getFundMode(), dto.getFundDeliveryType(),
         		dto.getPaymentMadeFor(), dto.getOtherInstructions(), 
         		dto.getFurnitureDeliveryAddress(), dto.getBudgetCenter(), 
-        		dto.getLineItem());       
+        		dto.getLineItem(), dto.getStatusCode(), dto.getApproverName(), dto.getApprover(), 
+        		dto.getCreatedBy(),	dto.getCreatedDate(), dto.getModifiedby(), dto.getModifiedDate()); 
     }
    
 }

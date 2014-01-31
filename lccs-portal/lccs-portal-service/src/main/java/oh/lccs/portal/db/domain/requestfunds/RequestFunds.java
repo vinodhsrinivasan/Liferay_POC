@@ -1,6 +1,7 @@
 package oh.lccs.portal.db.domain.requestfunds;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class RequestFunds {
 	
@@ -8,8 +9,8 @@ public class RequestFunds {
 	
 	private BigDecimal caseId;
 	
-	private String requestedDate;
-	private String requestingCaseWorker;
+	private Date requestedDate;
+	private BigDecimal requestingCaseWorker;
 	private String caseWorker;
 	private String caseName;
 	private String workerPhoneNumber;
@@ -24,11 +25,11 @@ public class RequestFunds {
 	private String alternativeResponse;
 	
 	//Information filed in by Caseworker for approval
-	private String personRespForPurchase;
+	private BigDecimal personRespForPurchase;
 	private String requestPurpose;
 	private String otherCommResContacted;
 	private String totalAmtRequested;
-	private String dateRequired;
+	private Date dateRequired;
 	private String fundMode;
 	private String fundDeliveryType;
 	private String paymentMadeFor;
@@ -38,15 +39,15 @@ public class RequestFunds {
 	private String lineItem;
 	
 	//Variables for the workflow
-	private String statusCode;
+	private BigDecimal statusCode;
 	private String approverName;
-	private String approver;
+	private BigDecimal approver;
 	
 	//Audit Info
-	private String createdBy;
-	private String createdDate;
-	private String modifiedby;
-	private String modifiedDate;
+	private BigDecimal createdBy;
+	private Date createdDate;
+	private BigDecimal modifiedby;
+	private Date modifiedDate;
 	
 	
 
@@ -66,19 +67,19 @@ public class RequestFunds {
 		this.caseId = caseId;
 	}
 
-	public String getRequestedDate() {
+	public Date getRequestedDate() {
 		return requestedDate;
 	}
 
-	public void setRequestedDate(String requestedDate) {
+	public void setRequestedDate(Date requestedDate) {
 		this.requestedDate = requestedDate;
 	}
 
-	public String getRequestingCaseWorker() {
+	public BigDecimal getRequestingCaseWorker() {
 		return requestingCaseWorker;
 	}
 
-	public void setRequestingCaseWorker(String requestingCaseWorker) {
+	public void setRequestingCaseWorker(BigDecimal requestingCaseWorker) {
 		this.requestingCaseWorker = requestingCaseWorker;
 	}
 
@@ -162,11 +163,11 @@ public class RequestFunds {
 		this.alternativeResponse = alternativeResponse;
 	}
 
-	public String getPersonRespForPurchase() {
+	public BigDecimal getPersonRespForPurchase() {
 		return personRespForPurchase;
 	}
 
-	public void setPersonRespForPurchase(String personRespForPurchase) {
+	public void setPersonRespForPurchase(BigDecimal personRespForPurchase) {
 		this.personRespForPurchase = personRespForPurchase;
 	}
 
@@ -194,11 +195,11 @@ public class RequestFunds {
 		this.totalAmtRequested = totalAmtRequested;
 	}
 
-	public String getDateRequired() {
+	public Date getDateRequired() {
 		return dateRequired;
 	}
 
-	public void setDateRequired(String dateRequired) {
+	public void setDateRequired(Date dateRequired) {
 		this.dateRequired = dateRequired;
 	}
 
@@ -258,11 +259,11 @@ public class RequestFunds {
 		this.lineItem = lineItem;
 	}
 
-	public String getStatusCode() {
+	public BigDecimal getStatusCode() {
 		return statusCode;
 	}
 
-	public void setStatusCode(String statusCode) {
+	public void setStatusCode(BigDecimal statusCode) {
 		this.statusCode = statusCode;
 	}
 
@@ -274,43 +275,43 @@ public class RequestFunds {
 		this.approverName = approverName;
 	}
 
-	public String getApprover() {
+	public BigDecimal getApprover() {
 		return approver;
 	}
 
-	public void setApprover(String approver) {
+	public void setApprover(BigDecimal approver) {
 		this.approver = approver;
 	}
 
-	public String getCreatedBy() {
+	public BigDecimal getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(BigDecimal createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public String getModifiedby() {
+	public BigDecimal getModifiedby() {
 		return modifiedby;
 	}
 
-	public void setModifiedby(String modifiedby) {
+	public void setModifiedby(BigDecimal modifiedby) {
 		this.modifiedby = modifiedby;
 	}
 
-	public String getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(String modifiedDate) {
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

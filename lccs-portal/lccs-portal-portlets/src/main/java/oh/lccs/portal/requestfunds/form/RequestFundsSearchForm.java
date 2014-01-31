@@ -1,5 +1,9 @@
 package oh.lccs.portal.requestfunds.form;
 
+import java.util.List;
+
+import oh.lccs.portal.db.domain.requestfunds.RequestFunds;
+
 import org.springframework.beans.factory.annotation.Configurable;
 
 @Configurable
@@ -10,6 +14,8 @@ public class RequestFundsSearchForm {
 	private String requestingCaseWorker;
 	private String workerPhoneNumber;
 	private String requestedDate;
+	
+	private List<RequestFunds> requestFundsRequests;
 
 	public String getSacwisId() {
 		return sacwisId;
@@ -35,6 +41,12 @@ public class RequestFundsSearchForm {
 	}
 	public void setRequestedDate(String requestedDate) {
 		this.requestedDate = requestedDate;
+	}
+	public List<RequestFunds> getRequestFundsRequests() {
+		return requestFundsRequests;
+	}
+	public void setRequestFundsRequests(List<RequestFunds> requestFundsRequests) {
+		this.requestFundsRequests = requestFundsRequests;
 	}
 	@Override
 	public String toString() {

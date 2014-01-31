@@ -66,18 +66,59 @@ public class RequestFundsDTO {
 //		super();
 	}
 
+	
+	
+	/**
+	 * @param sacwisId
+	 * @param requestedDate
+	 * @param requestingCaseWorker
+	 * @param caseWorker
+	 * @param caseName
+	 * @param workerPhoneNumber
+	 * @param donation
+	 * @param prePlacement
+	 * @param afterCareIndependence
+	 * @param kinshipCare
+	 * @param operating
+	 * @param familyReunification
+	 * @param alternativeResponse
+	 * @param requestType
+	 * @param requestingForPeople
+	 * @param selectedCaseParticipants
+	 * @param personRespForPurchase
+	 * @param requestPurpose
+	 * @param otherCommResContacted
+	 * @param totalAmtRequested
+	 * @param dateRequired
+	 * @param fundMode
+	 * @param fundDeliveryType
+	 * @param paymentMadeFor
+	 * @param otherInstructions
+	 * @param furnitureDeliveryAddress
+	 * @param budgetCenter
+	 * @param lineItem
+	 * @param statusCode
+	 * @param approverName
+	 * @param approver
+	 * @param createdBy
+	 * @param createdDate
+	 * @param modifiedby
+	 * @param modifiedDate
+	 */
 	public RequestFundsDTO(String sacwisId, String requestedDate,
 			String requestingCaseWorker, String caseWorker, String caseName,
 			String workerPhoneNumber, String donation, String prePlacement,
 			String afterCareIndependence, String kinshipCare, String operating,
 			String familyReunification, String alternativeResponse,
 			String[] requestType, List<CaseParticipant> requestingForPeople,
-			String personRespForPurchase, String requestPurpose,
-			String otherCommResContacted, String totalAmtRequested,
-			String dateRequired, String fundMode, String fundDeliveryType,
-			String paymentMadeFor, String otherInstructions,
-			String furnitureDeliveryAddress, String budgetCenter,
-			String lineItem) {
+			String[] selectedCaseParticipants, String personRespForPurchase,
+			String requestPurpose, String otherCommResContacted,
+			String totalAmtRequested, String dateRequired, String fundMode,
+			String fundDeliveryType, String paymentMadeFor,
+			String otherInstructions, String furnitureDeliveryAddress,
+			String budgetCenter, String lineItem, String statusCode,
+			String approverName, String approver, String createdBy,
+			String createdDate, String modifiedby, String modifiedDate) {
 		super();
 		this.sacwisId = sacwisId;
 		this.requestedDate = requestedDate;
@@ -94,6 +135,7 @@ public class RequestFundsDTO {
 		this.alternativeResponse = alternativeResponse;
 		this.requestType = requestType;
 		this.requestingForPeople = requestingForPeople;
+		this.selectedCaseParticipants = selectedCaseParticipants;
 		this.personRespForPurchase = personRespForPurchase;
 		this.requestPurpose = requestPurpose;
 		this.otherCommResContacted = otherCommResContacted;
@@ -106,8 +148,17 @@ public class RequestFundsDTO {
 		this.furnitureDeliveryAddress = furnitureDeliveryAddress;
 		this.budgetCenter = budgetCenter;
 		this.lineItem = lineItem;
+		this.statusCode = statusCode;
+		this.approverName = approverName;
+		this.approver = approver;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.modifiedby = modifiedby;
+		this.modifiedDate = modifiedDate;
 	}
-	
+
+
+
 	public String getSacwisId() {
 		return sacwisId;
 	}

@@ -17,4 +17,6 @@ public interface RequestFundsDAO {
 	boolean saveFundRequestParticipant(RequestFundsParticipant requestFundsParticipant);
 	
 	boolean updateFundRequest(RequestFunds requestFunds);
+	
+	List<Map<String, Object>> retrieveRequestFundsRequests(String sacwisId);
 }

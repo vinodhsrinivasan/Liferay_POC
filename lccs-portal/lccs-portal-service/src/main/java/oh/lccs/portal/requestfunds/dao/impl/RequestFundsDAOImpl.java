@@ -30,6 +30,7 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 	private static final String FUNDS_REQUEST_INSERT_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.insertFundRequest";
 	private static final String FUNDS_REQUEST_PARTICIPANT_INSERT_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.insertFundRequestParticipant";
 	private static final String FUNDS_REQUEST_UPDATE_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.updateFundRequest";
+	private static final String RETRIEVE_FUNDS_REQUEST_MAPPER = "oh.lccs.portal.db.mapper.requestfunds.RequestFundsMapper.retrieveRequestFundsRequests";
 
 
 	@Override
@@ -97,6 +98,24 @@ public class RequestFundsDAOImpl implements RequestFundsDAO {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<Map<String, Object>> retrieveRequestFundsRequests(
+			String sacwisId) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("caseId",sacwisId);
+		
+		List<Map<String, Object>> userInfo = new MybatisQueryForList().perform(RETRIEVE_FUNDS_REQUEST_MAPPER, parameters );
+		System.out.println(userInfo);
+		if(userInfo!= null && !userInfo.isEmpty()){
+			RequestFunds requestFunds= (RequestFunds) userInfo.get(0);
+			if(requestFunds!= null){
+				return userInfo;
+			}
+		}
+		
+		return null;
 	}
 	
 	

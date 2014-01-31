@@ -3,6 +3,9 @@
  */
 package oh.lccs.portal.db.domain.requestfunds;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 
 /**
  * @author BCMSZV0
@@ -10,29 +13,29 @@ package oh.lccs.portal.db.domain.requestfunds;
  */
 public class RequestFundsParticipant {
 	
-	private String requestFundsId;
+	private BigDecimal requestFundsId;
 	
 	private String personFullName;
-	private String personId;
-	private String dob;
-	private String relationShipTypeCode;;
+	private BigDecimal personId;
+	private Date dob;
+	private String relationShipTypeCode;
 	
 	private String custody;
-	private String custodyAgencyId;
+	private BigDecimal custodyAgencyId;
 	private String placement;
-	private String custodyDate;
+	private Date custodyDate;
 	private String iveReimbursable;
 	
 	//Audit Info
-	private String createdBy;
-	private String createdDate;
-	private String modifiedby;
-	private String modifiedDate;
+	private BigDecimal createdBy;
+	private Date createdDate;
+	private BigDecimal modifiedby;
+	private Date modifiedDate;
 	
-	public String getRequestFundsId() {
+	public BigDecimal getRequestFundsId() {
 		return requestFundsId;
 	}
-	public void setRequestFundsId(String requestFundsId) {
+	public void setRequestFundsId(BigDecimal requestFundsId) {
 		this.requestFundsId = requestFundsId;
 	}
 	public String getPersonFullName() {
@@ -41,16 +44,16 @@ public class RequestFundsParticipant {
 	public void setPersonFullName(String personFullName) {
 		this.personFullName = personFullName;
 	}
-	public String getPersonId() {
+	public BigDecimal getPersonId() {
 		return personId;
 	}
-	public void setPersonId(String personId) {
+	public void setPersonId(BigDecimal personId) {
 		this.personId = personId;
 	}
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 	public String getRelationShipTypeCode() {
@@ -77,10 +80,10 @@ public class RequestFundsParticipant {
 	public void setPlacement(String placement) {
 		this.placement = placement;
 	}
-	public String getCustodyDate() {
+	public Date getCustodyDate() {
 		return custodyDate;
 	}
-	public void setCustodyDate(String custodyDate) {
+	public void setCustodyDate(Date custodyDate) {
 		this.custodyDate = custodyDate;
 	}
 	public String getIveReimbursable() {
@@ -89,34 +92,34 @@ public class RequestFundsParticipant {
 	public void setIveReimbursable(String iveReimbursable) {
 		this.iveReimbursable = iveReimbursable;
 	}
-	public String getCustodyAgencyId() {
+	public BigDecimal getCustodyAgencyId() {
 		return custodyAgencyId;
 	}
-	public void setCustodyAgencyId(String custodyAgencyId) {
+	public void setCustodyAgencyId(BigDecimal custodyAgencyId) {
 		this.custodyAgencyId = custodyAgencyId;
 	}
-	public String getCreatedBy() {
+	public BigDecimal getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(BigDecimal createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getModifiedby() {
+	public BigDecimal getModifiedby() {
 		return modifiedby;
 	}
-	public void setModifiedby(String modifiedby) {
+	public void setModifiedby(BigDecimal modifiedby) {
 		this.modifiedby = modifiedby;
 	}
-	public String getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
-	public void setModifiedDate(String modifiedDate) {
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 	

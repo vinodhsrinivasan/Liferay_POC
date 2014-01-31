@@ -126,7 +126,7 @@
 
 
 	
-<form name="requestFundsCaseDetailsForm" id="requestFundsForm" class="form-inline" role="form" commandName="sacwisForm" method="post" action="#">
+<form name="requestFundsCaseDetailsForm" id="requestFundsCaseDetailsForm" class="form-inline"  onsubmit="return false;" method="post" action="#">
  <fieldset class="fsStyle">
     <legend class="legendStyle">Check Person for which this request is being made</legend>		
 		<div class="tab-content-container">
@@ -248,7 +248,7 @@
 		    	<label class="labelStyle" for="otherCommResContacted">Other Community Resources Contacted:</label> 
 		   </div>
 		   <div class="col-md-9">	
-				<input value="${caseWorkerDetailsDTO.otherCommResContacted}" />
+		  	 <input type="text" id="otherCommResContacted" name="otherCommResContacted" class="form-control" />
 		   </div>
 		 </div>
 		  <div class="row">		
@@ -268,10 +268,10 @@
 		  <div class="row">
 			  <div class="col-md-3">
 			 	<label class="labelStyle" for="fundMode">Fund Mode: </label>
-				<select id="fundMode"  name="caseWorkerDetailsDTO.fundMode" class="form-control"  required  data-msg-required="Select the Fund Mode.">
+				<select id="fundMode"  name="fundMode" class="form-control"  required  data-msg-required="Select the Fund Mode.">
 					<option value="">-- Please Select --</option>
-					<option value="Voucher">Voucher</option>
-					<option value="check">Check</option>
+					<option value="VOUCHER">Voucher</option>
+					<option value="CHECK">Check</option>
 				</select>
 			  </div>
 		   	  <div class="col-md-3">
@@ -281,9 +281,9 @@
 			 	<label class="labelStyle" for="fundDeliveryType">Fund Delivery Type: </label>
 				<select id="fundDeliveryType" name="fundDeliveryType" class="form-control"  required  data-msg-required="Select the Fund Delivery Type.">
 					<option value="">-- Please Select --</option>
-					<option value="toBePickedUp">To be picked up</option>
-					<option value="callUponFundsAvail">Call when funds are</option>
-					<option value="furniture">For Furniture/Applicances</option>
+					<option value="TOBEPICKEDUP">To be picked up</option>
+					<option value="CALLUPONFUNDSAVAIL">Call when funds are</option>
+					<option value="FURNITURE">For Furniture/Applicances</option>
 				</select>
 			  </div>
 			   <div class="col-md-3">
@@ -342,16 +342,21 @@
 		<div class="spacerDiv"><img src="images/1x1.gif" alt=""></div>
 		<div class="form-group">
 		<table>
-		<tr>
-			<td>
-				<button type="submit" class="btn btn-primary" onclick="requestFundsCaseDetailsObj.click('${fundRequestSubmitURL}')">Submit the request for approval</button>
-			</td>
-		</tr>
-		
+			<tr>
+				<td>
+					<button type="submit" class="btn btn-primary" id="fundRequestSubmitURL">Search</button>
+				</td>
+			</tr>
 		</table>
 		</div>
 		
 	</form>
 </div>
 </div>
+
+<script type="text/javascript">
+$(function() {
+	requestFundsCaseDetailsObj.init('${fundRequestSubmitURL}');
+});
+</script>
 

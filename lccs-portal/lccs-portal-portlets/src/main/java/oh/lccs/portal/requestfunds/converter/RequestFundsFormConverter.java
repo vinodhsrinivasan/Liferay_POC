@@ -33,12 +33,13 @@ public class RequestFundsFormConverter implements Converter<RequestFundsForm, Re
         		requestFundsForm.getAfterCareIndependence(), requestFundsForm.getKinshipCare(), requestFundsForm.getOperating(),
         		requestFundsForm.getFamilyReunification(), requestFundsForm.getAlternativeResponse(),
         		requestFundsForm.getRequestType(), requestFundsForm.getRequestingForPeople(),
-        		requestFundsForm.getPersonRespForPurchase(), requestFundsForm.getRequestPurpose(),
+        		requestFundsForm.getSelectedCaseParticipants(), requestFundsForm.getPersonRespForPurchase(), requestFundsForm.getRequestPurpose(),
         		requestFundsForm.getOtherCommResContacted(), requestFundsForm.getTotalAmtRequested(),
         		requestFundsForm.getDateRequired(), requestFundsForm.getFundMode(), requestFundsForm.getFundDeliveryType(),
         		requestFundsForm.getPaymentMadeFor(), requestFundsForm.getOtherInstructions(), 
         		requestFundsForm.getFurnitureDeliveryAddress(), requestFundsForm.getBudgetCenter(), 
-        		requestFundsForm.getLineItem());
+        		requestFundsForm.getLineItem(), requestFundsForm.getStatusCode(), requestFundsForm.getApproverName(), requestFundsForm.getApprover(),
+        		requestFundsForm.getCreatedBy(), requestFundsForm.getCreatedDate(), requestFundsForm.getModifiedby(), requestFundsForm.getModifiedDate());
         
 //        return null;
     }

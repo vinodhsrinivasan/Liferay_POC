@@ -10,6 +10,7 @@ import oh.lccs.portal.db.domain.requestfunds.RequestFundsParticipant;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * Mybatis mapper for RequestFunds.
@@ -76,6 +77,8 @@ public interface RequestFundsMapper {
 			+ " APPROVER_NAME= #{approverName}, APPROVER=#{approver}, CREATED_DATE= #{createdDate}, CREATED_BY=#{createdBy}, "
 			+ "	MODIFIED_DATE=#{modifiedDate}, MODIFIED_BY=#{modifiedby}";
 	
+	static final String RETRIEVE_REQUEST_FUNDS_REQUESTS = "select case_id as caseId, case_name as caseName, case_worker as caseWorker, created_date as createdDate from request_funds where approver = 0";
+	
 	@Select(SQL)
 	public List<CaseParticipant> searchBasedOnSacwisId(@Param("caseId") String caseId);
 	
@@ -90,4 +93,8 @@ public interface RequestFundsMapper {
 	
 	@Update(UPDATE_REQUEST_FUNDS)
 	public int updateFundRequest(RequestFunds requestFund);
+	
+	@Select(RETRIEVE_REQUEST_FUNDS_REQUESTS)
+	public List<RequestFunds> retrieveRequestFundsRequests(@Param("caseId") String caseId);
+	
 }

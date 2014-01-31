@@ -8,6 +8,7 @@ import oh.lccs.portal.requestfunds.dto.RequestingPersonDTO;*/
 
 
 
+
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 
 import org.springframework.beans.factory.annotation.Configurable;
@@ -73,6 +74,7 @@ public class RequestFundsForm {
 //		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param sacwisId
 	 * @param requestedDate
@@ -89,6 +91,7 @@ public class RequestFundsForm {
 	 * @param alternativeResponse
 	 * @param requestType
 	 * @param requestingForPeople
+	 * @param selectedCaseParticipants
 	 * @param personRespForPurchase
 	 * @param requestPurpose
 	 * @param otherCommResContacted
@@ -101,6 +104,13 @@ public class RequestFundsForm {
 	 * @param furnitureDeliveryAddress
 	 * @param budgetCenter
 	 * @param lineItem
+	 * @param statusCode
+	 * @param approverName
+	 * @param approver
+	 * @param createdBy
+	 * @param createdDate
+	 * @param modifiedby
+	 * @param modifiedDate
 	 */
 	public RequestFundsForm(String sacwisId, String requestedDate,
 			String requestingCaseWorker, String caseWorker, String caseName,
@@ -108,12 +118,14 @@ public class RequestFundsForm {
 			String afterCareIndependence, String kinshipCare, String operating,
 			String familyReunification, String alternativeResponse,
 			String[] requestType, List<CaseParticipant> requestingForPeople,
-			String personRespForPurchase, String requestPurpose,
-			String otherCommResContacted, String totalAmtRequested,
-			String dateRequired, String fundMode, String fundDeliveryType,
-			String paymentMadeFor, String otherInstructions,
-			String furnitureDeliveryAddress, String budgetCenter,
-			String lineItem) {
+			String[] selectedCaseParticipants, String personRespForPurchase,
+			String requestPurpose, String otherCommResContacted,
+			String totalAmtRequested, String dateRequired, String fundMode,
+			String fundDeliveryType, String paymentMadeFor,
+			String otherInstructions, String furnitureDeliveryAddress,
+			String budgetCenter, String lineItem, String statusCode,
+			String approverName, String approver, String createdBy,
+			String createdDate, String modifiedby, String modifiedDate) {
 		super();
 		this.sacwisId = sacwisId;
 		this.requestedDate = requestedDate;
@@ -130,6 +142,7 @@ public class RequestFundsForm {
 		this.alternativeResponse = alternativeResponse;
 		this.requestType = requestType;
 		this.requestingForPeople = requestingForPeople;
+		this.selectedCaseParticipants = selectedCaseParticipants;
 		this.personRespForPurchase = personRespForPurchase;
 		this.requestPurpose = requestPurpose;
 		this.otherCommResContacted = otherCommResContacted;
@@ -142,7 +155,15 @@ public class RequestFundsForm {
 		this.furnitureDeliveryAddress = furnitureDeliveryAddress;
 		this.budgetCenter = budgetCenter;
 		this.lineItem = lineItem;
+		this.statusCode = statusCode;
+		this.approverName = approverName;
+		this.approver = approver;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.modifiedby = modifiedby;
+		this.modifiedDate = modifiedDate;
 	}
+
 	public String getSacwisId() {
 		return sacwisId;
 	}

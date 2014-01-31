@@ -2,10 +2,12 @@ package oh.lccs.portal.requestfunds.service.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import oh.lccs.portal.common.DateUtils;
 import oh.lccs.portal.db.domain.requestfunds.CaseDetails;
 import oh.lccs.portal.db.domain.requestfunds.CaseParticipant;
 import oh.lccs.portal.db.domain.requestfunds.RequestFunds;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 @Service(value=LucasServiceConstants.REQUEST_FUNDS_SERVICE)
 public class RequestFundsServiceImpl implements RequestFundsService {
 	
+	private static final String EMPTY_STRING = " ";
 
 	@Autowired
 	@Qualifier(value=LucasServiceConstants.REQUEST_FUNDS_DAO)
@@ -98,15 +101,30 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 		CaseParticipant caseParticipant = null;
 		RequestFundsParticipant participantUO = null;
 		
-		if(saveFlag){
-			int size = dto.getSelectedCaseParticipants().length;
-			for (int i = 0; i < size; i++) {
-				selectedCaseParticipant = Long.parseLong(dto.getSelectedCaseParticipants()[i]);
+//		if(saveFlag){
+//			int size = dto.getSelectedCaseParticipants().length;
+//			for (int i = 0; i < size; i++) {
+//				selectedCaseParticipant = Long.parseLong(dto.getSelectedCaseParticipants()[i]);
+//				if(dto.getRequestingForPeople() != null && dto.getRequestingForPeople().size() >0 ){
+//					Iterator<CaseParticipant> caseParticipantItr = dto.getRequestingForPeople().iterator();
+//					while(caseParticipantItr.hasNext()){
+//						caseParticipant = caseParticipantItr.next();
+//						if(caseParticipant.getSacwisId().equalsIgnoreCase(String.valueOf(selectedCaseParticipant))){
+//							participantUO = new RequestFundsParticipant();
+//							saveFundRequestParticipant(caseParticipant, participantUO);
+//							saveFlag = requestFundsDAO.saveFundRequestParticipant(participantUO);
+//						}
+//					}
+//				}
+//				
+//			}
+//		}
+		
+				if(saveFlag){
 				if(dto.getRequestingForPeople() != null && dto.getRequestingForPeople().size() >0 ){
 					Iterator<CaseParticipant> caseParticipantItr = dto.getRequestingForPeople().iterator();
 					while(caseParticipantItr.hasNext()){
 						caseParticipant = caseParticipantItr.next();
-						if(caseParticipant.getSacwisId().equalsIgnoreCase(String.valueOf(selectedCaseParticipant))){
 							participantUO = new RequestFundsParticipant();
 							saveFundRequestParticipant(caseParticipant, participantUO);
 							saveFlag = requestFundsDAO.saveFundRequestParticipant(participantUO);
@@ -114,8 +132,6 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 					}
 				}
 				
-			}
-		}
 		
 		return saveFlag;
 	}
@@ -136,288 +152,308 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 	 * @param requestFunds
 	 */
 	private void saveFundRequest(RequestFundsDTO dto, RequestFunds requestFunds){
-		if(dto.getAfterCareIndependence() != null){
-			requestFunds.setAfterCareIndependence(dto.getAfterCareIndependence());
-		}else{
-			requestFunds.setAfterCareIndependence(null);
-		}
+//		if(dto.getAfterCareIndependence() != null){
+//			requestFunds.setAfterCareIndependence(dto.getAfterCareIndependence());
+//		}else{
+//			requestFunds.setAfterCareIndependence(null);
+//		}
 		
 		if(dto.getSacwisId() != null){
 			requestFunds.setCaseId(new BigDecimal(dto.getSacwisId()));
+		}else{
+			requestFunds.setCaseId(new BigDecimal(0));
 		}
 		
 		if(dto.getRequestedDate() != null){
-			requestFunds.setRequestedDate(dto.getRequestedDate());
+			requestFunds.setRequestedDate(DateUtils.getMMDDYYYYStringAsDate(dto.getRequestedDate()));
 		}else{
-			requestFunds.setRequestedDate(null);
+			requestFunds.setRequestedDate(new Date());
 		}
 		
 		if(dto.getRequestingCaseWorker() != null){
-			requestFunds.setRequestingCaseWorker(dto.getRequestingCaseWorker());
+			requestFunds.setRequestingCaseWorker(new BigDecimal(dto.getRequestingCaseWorker()));
 		}else{
-			requestFunds.setRequestingCaseWorker(null);
+			requestFunds.setRequestingCaseWorker(new BigDecimal(0));
 		}
 		
 		if(dto.getCaseWorker() != null){
 			requestFunds.setCaseWorker(dto.getCaseWorker());
 		}else{
-			requestFunds.setCaseWorker(null);
+			requestFunds.setCaseWorker(EMPTY_STRING);
 		}
 		
 		if(dto.getCaseName() != null){
 			requestFunds.setCaseName(dto.getCaseName());
 		}else{
-			requestFunds.setCaseName(null);
+			requestFunds.setCaseName(EMPTY_STRING);
 		}
 		
 		if(dto.getWorkerPhoneNumber() != null){
 			requestFunds.setWorkerPhoneNumber(dto.getWorkerPhoneNumber());
 		}else{
-			requestFunds.setWorkerPhoneNumber(null);
+			requestFunds.setWorkerPhoneNumber(EMPTY_STRING);
 		}
 		
 		//Request Types
 		if(dto.getDonation() != null){
 			requestFunds.setDonation(dto.getDonation());
 		}else{
-			requestFunds.setDonation(null);
+			requestFunds.setDonation(EMPTY_STRING);
 		}
 		
 		if(dto.getPrePlacement() != null){
 			requestFunds.setPrePlacement(dto.getPrePlacement());
 		}else{
-			requestFunds.setPrePlacement(null);
+			requestFunds.setPrePlacement(EMPTY_STRING);
 		}
 		
 		if(dto.getAfterCareIndependence() != null){
 			requestFunds.setAfterCareIndependence(dto.getAfterCareIndependence());
 		}else{
-			requestFunds.setAfterCareIndependence(null);
+			requestFunds.setAfterCareIndependence(EMPTY_STRING);
 		}
 		
 		if(dto.getKinshipCare() != null){
 			requestFunds.setKinshipCare(dto.getKinshipCare());
 		}else{
-			requestFunds.setKinshipCare(null);
+			requestFunds.setKinshipCare(EMPTY_STRING);
 		}
 		
 		if(dto.getOperating() != null){
 			requestFunds.setOperating(dto.getOperating());
 		}else{
-			requestFunds.setOperating(null);
+			requestFunds.setOperating(EMPTY_STRING);
 		}
 		
 		if(dto.getFamilyReunification() != null){
 			requestFunds.setFamilyReunification(dto.getFamilyReunification());
 		}else{
-			requestFunds.setFamilyReunification(null);
+			requestFunds.setFamilyReunification(EMPTY_STRING);
 		}
 		
 		if(dto.getAlternativeResponse() != null){
 			requestFunds.setAlternativeResponse(dto.getAlternativeResponse());
 		}else{
-			requestFunds.setAlternativeResponse(null);
+			requestFunds.setAlternativeResponse(EMPTY_STRING);
 		}
 		
 		//Information filled in by Caseworker for approval
 		
 		if(dto.getPersonRespForPurchase() != null){
-			requestFunds.setPersonRespForPurchase(dto.getPersonRespForPurchase());
+			requestFunds.setPersonRespForPurchase(new BigDecimal(dto.getPersonRespForPurchase()));
 		}else{
-			requestFunds.setPersonRespForPurchase(null);
+			requestFunds.setPersonRespForPurchase(new BigDecimal(0));
 		}
 		
 		if(dto.getRequestPurpose() != null){
 			requestFunds.setRequestPurpose(dto.getRequestPurpose());
 		}else{
-			requestFunds.setRequestPurpose(null);
+			requestFunds.setRequestPurpose(EMPTY_STRING);
 		}
 		
 		if(dto.getOtherCommResContacted() != null){
 			requestFunds.setOtherCommResContacted(dto.getOtherCommResContacted());
 		}else{
-			requestFunds.setOtherCommResContacted(null);
+			requestFunds.setOtherCommResContacted(EMPTY_STRING);
 		}
 		
 		if(dto.getTotalAmtRequested() != null){
 			requestFunds.setTotalAmtRequested(dto.getTotalAmtRequested());
 		}else{
-			requestFunds.setTotalAmtRequested(null);
+			requestFunds.setTotalAmtRequested(EMPTY_STRING);
 		}
 		
 		if(dto.getDateRequired() != null){
-			requestFunds.setDateRequired(dto.getDateRequired());
+			requestFunds.setDateRequired(DateUtils.getMMDDYYYYStringAsDate(dto.getDateRequired()));
 		}else{
-			requestFunds.setDateRequired(null);
+			requestFunds.setDateRequired(new Date());
 		}
 		
 		if(dto.getFundMode() != null){
 			requestFunds.setFundMode(dto.getFundMode());
 		}else{
-			requestFunds.setFundMode(null);
+			requestFunds.setFundMode(EMPTY_STRING);
 		}
 		
 		if(dto.getFundDeliveryType() != null){
 			requestFunds.setFundDeliveryType(dto.getFundDeliveryType());
 		}else{
-			requestFunds.setFundDeliveryType(null);
+			requestFunds.setFundDeliveryType(EMPTY_STRING);
 		}
 		
 		if(dto.getPaymentMadeFor() != null){
 			requestFunds.setPaymentMadeFor(dto.getPaymentMadeFor());
 		}else{
-			requestFunds.setPaymentMadeFor(null);
+			requestFunds.setPaymentMadeFor(EMPTY_STRING);
 		}
 		
 		if(dto.getOtherInstructions() != null){
 			requestFunds.setOtherInstructions(dto.getOtherInstructions());
 		}else{
-			requestFunds.setOtherInstructions(null);
+			requestFunds.setOtherInstructions(EMPTY_STRING);
 		}
 		
 		if(dto.getFurnitureDeliveryAddress() != null){
 			requestFunds.setFurnitureDeliveryAddress(dto.getFurnitureDeliveryAddress());
 		}else{
-			requestFunds.setFurnitureDeliveryAddress(null);
+			requestFunds.setFurnitureDeliveryAddress(EMPTY_STRING);
 		}
 		
 		if(dto.getBudgetCenter() != null){
 			requestFunds.setBudgetCenter(dto.getBudgetCenter());
 		}else{
-			requestFunds.setBudgetCenter(null);
+			requestFunds.setBudgetCenter(EMPTY_STRING);
 		}
 		
 		if(dto.getLineItem() != null){
 			requestFunds.setLineItem(dto.getLineItem());
 		}else{
-			requestFunds.setLineItem(null);
+			requestFunds.setLineItem(EMPTY_STRING);
 		}
 		
 		if(dto.getLineItem() != null){
 			requestFunds.setLineItem(dto.getLineItem());
 		}else{
-			requestFunds.setLineItem(null);
+			requestFunds.setLineItem(EMPTY_STRING);
 		}
 		
 		//Workflow Variables
 		if(dto.getStatusCode() != null){
-			requestFunds.setStatusCode(dto.getStatusCode());
+			requestFunds.setStatusCode(new BigDecimal(dto.getStatusCode()));
 		}else{
-			requestFunds.setStatusCode(null);
+			requestFunds.setStatusCode(new BigDecimal(0));
 		}
 		
 		if(dto.getApproverName() != null){
 			requestFunds.setApproverName(dto.getApproverName());
 		}else{
-			requestFunds.setApproverName(null);
+			requestFunds.setApproverName(EMPTY_STRING);
 		}
 		
 		if(dto.getApprover() != null){
-			requestFunds.setApprover(dto.getApprover());
+			requestFunds.setApprover(new BigDecimal(dto.getApprover()));
 		}else{
-			requestFunds.setApprover(null);
+			requestFunds.setApprover(new BigDecimal(0));
 		}
 		
 		//Audit Info
 		if(dto.getCreatedBy() != null){
-			requestFunds.setCreatedBy(dto.getCreatedBy());
+			requestFunds.setCreatedBy(new BigDecimal(dto.getCreatedBy()));
 		}else{
-			requestFunds.setCreatedBy(null);
+			requestFunds.setCreatedBy(new BigDecimal(0));
 		}
 		
 		if(dto.getCreatedDate() != null){
-			requestFunds.setCreatedDate(dto.getCreatedDate());
+			requestFunds.setCreatedDate(DateUtils.getMMDDYYYYStringAsDate(dto.getCreatedDate()));
 		}else{
-			requestFunds.setCreatedDate(null);
+			requestFunds.setCreatedDate(new Date());
 		}
 		
 		if(dto.getModifiedby() != null){
-			requestFunds.setModifiedby(dto.getModifiedby());
+			requestFunds.setModifiedby(new BigDecimal(dto.getModifiedby()));
 		}else{
-			requestFunds.setModifiedby(null);
+			requestFunds.setModifiedby(new BigDecimal(0));
 		}
 		
 		if(dto.getModifiedDate() != null){
-			requestFunds.setModifiedDate(dto.getModifiedDate());
+			requestFunds.setModifiedDate(DateUtils.getMMDDYYYYStringAsDate(dto.getModifiedDate()));
 		}else{
-			requestFunds.setModifiedDate(null);
+			requestFunds.setModifiedDate(new Date());
 		}
 	}
 	
 	private void saveFundRequestParticipant(CaseParticipant caseParticipant, RequestFundsParticipant participantUO){
 		if(caseParticipant.getSacwisId() != null){
-			participantUO.setPersonId(caseParticipant.getSacwisId());
+			participantUO.setPersonId(new BigDecimal(caseParticipant.getSacwisId()));
 		}else{
-			participantUO.setPersonId(null);
+			participantUO.setPersonId(new BigDecimal(0));
 		}
+		
+		participantUO.setRequestFundsId(new BigDecimal(5));
 		
 		if(caseParticipant.getPersonFullName() != null){
 			participantUO.setPersonFullName(caseParticipant.getPersonFullName());
 		}else{
-			participantUO.setPersonFullName(null);
+			participantUO.setPersonFullName(EMPTY_STRING);
 		}
 		
 		if(caseParticipant.getDob() != null){
-			participantUO.setDob(caseParticipant.getDob());
+			participantUO.setDob(DateUtils.getMMDDYYYYStringAsDate(caseParticipant.getDob()));
 		}else{
-			participantUO.setDob(null);
+			participantUO.setDob(new Date());
 		}
 		
 		if(caseParticipant.getType() != null){
 			participantUO.setRelationShipTypeCode(caseParticipant.getType());
 		}else{
-			participantUO.setRelationShipTypeCode(null);
+			participantUO.setRelationShipTypeCode(EMPTY_STRING);
 		}
 		
 		if(caseParticipant.getCustody() != null){
 			participantUO.setCustody(caseParticipant.getCustody());
 		}else{
-			participantUO.setCustody(null);
+			participantUO.setCustody(EMPTY_STRING);
 		}
 		
 		if(caseParticipant.getCustodyAgencyId() != null){
-			participantUO.setCustodyAgencyId(caseParticipant.getCustodyAgencyId());
+			participantUO.setCustodyAgencyId(new BigDecimal(caseParticipant.getCustodyAgencyId()));
 		}else{
-			participantUO.setCustodyAgencyId(null);
+			participantUO.setCustodyAgencyId(new BigDecimal(0));
 		}
 		
 		if(caseParticipant.getCustodyDate() != null){
-			participantUO.setCustodyDate(caseParticipant.getCustodyDate());
+			participantUO.setCustodyDate(DateUtils.getMMDDYYYYStringAsDate(caseParticipant.getCustodyDate()));
 		}else{
-			participantUO.setCustodyDate(null);
+			participantUO.setCustodyDate(new Date());
 		}
 		
 		if(caseParticipant.getIveReimbursable() != null){
 			participantUO.setIveReimbursable(caseParticipant.getIveReimbursable());
 		}else{
-			participantUO.setIveReimbursable(null);
+			participantUO.setIveReimbursable(EMPTY_STRING);
 		}
 		
 		//Audit Info
 		if(caseParticipant.getCreatedBy() != null){
-			participantUO.setCreatedBy(caseParticipant.getCreatedBy());
+			participantUO.setCreatedBy(new BigDecimal(caseParticipant.getCreatedBy()));
 		}else{
-			participantUO.setCreatedBy(null);
+			participantUO.setCreatedBy(new BigDecimal(0));
 		}
 		
 		if(caseParticipant.getCreatedDate() != null){
-			participantUO.setCreatedDate(caseParticipant.getCreatedDate());
+			participantUO.setCreatedDate(DateUtils.getMMDDYYYYStringAsDate(caseParticipant.getCreatedDate()));
 		}else{
-			participantUO.setCreatedDate(null);
+			participantUO.setCreatedDate(new Date());
 		}
 		
 		if(caseParticipant.getModifiedby() != null){
-			participantUO.setModifiedby(caseParticipant.getModifiedby());
+			participantUO.setModifiedby(new BigDecimal(caseParticipant.getModifiedby()));
 		}else{
-			participantUO.setModifiedby(null);
+			participantUO.setModifiedby(new BigDecimal(0));
 		}
 		
 		if(caseParticipant.getModifiedDate() != null){
-			participantUO.setModifiedDate(caseParticipant.getModifiedDate());
+			participantUO.setModifiedDate(DateUtils.getMMDDYYYYStringAsDate(caseParticipant.getModifiedDate()));
 		}else{
-			participantUO.setModifiedDate(null);
+			participantUO.setModifiedDate(new Date());
 		}
 		
+	}
+
+	@Override
+	public List<RequestFunds> retrieveRequestFundsRequests(RequestFundsDTO dto) {
+		List<Map<String, Object>> requestFundsColl = requestFundsDAO.retrieveRequestFundsRequests(dto.getSacwisId());
+		List<RequestFunds> requestFundsList = new ArrayList<RequestFunds>();
+		// TODO Auto-generated method stub
+		if(requestFundsColl != null && requestFundsColl.size()> 0){
+			Iterator<Map<String, Object>> itr = requestFundsColl.iterator();
+			while(itr.hasNext()){
+				RequestFunds fundRequests = (RequestFunds) itr.next(); 
+				requestFundsList.add(fundRequests);
+			}
+		}
+		return requestFundsList;
 	}	
+	
 
 }
