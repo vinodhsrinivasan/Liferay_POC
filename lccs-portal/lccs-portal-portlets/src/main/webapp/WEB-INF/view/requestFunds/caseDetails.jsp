@@ -137,33 +137,33 @@
 				</div>
 				<div class="row">
 					 <div class="col-md-3">
-						<input type="checkbox"  name="${caseWorkerDetailsDTO.requestType}"  value = "Donation" id="Donation" />
+						<input type="checkbox"  name="donation"  value = "Donation" id="Donation" />
 						Donation
 					 </div>
 					<div class="col-md-3">
-						<input type="checkbox" value="${caseWorkerDetailsDTO.prePlacement}" id="prePlacement" />
+						<input type="checkbox"  name="prePlacement"  value = "PrePlacement" id="PrePlacement" />
 						Preplacement Prevention
 					</div>
 					<div class="col-md-3">
-						<input type="checkbox" name="${caseWorkerDetailsDTO.requestType}"  value = "afterCareIndependence" id="afterCareIndependence" />
+					<input type="checkbox" name="${caseWorkerDetailsDTO.afterCareIndependence}"  value = "afterCareIndependence" id="afterCareIndependence" />
 						Aftercare Independence
 					</div>
 					<div class="col-md-3">
-						<input type="checkbox" value="${caseWorkerDetailsDTO.kinshipCare}" id="kinshipCare" />
+					<input type="checkbox"  name="kinshipCare"  value = "kinshipCare" id="kinshipCare" />
 						Kinship Care
 					</div>
 				</div>
 				<div class="row">
 					 <div class="col-md-3">
-						<input type="checkbox" value="${caseWorkerDetailsDTO.operating}" id="operating" />
+					 <input type="checkbox"  name="operating"  value = "operating" id="operating" />
 						Operating
 					 </div>
 					<div class="col-md-3">
-						<input type="checkbox" value="${caseWorkerDetailsDTO.familyReunification}" id="familyReunification" />
+					<input type="checkbox"  name="familyReunification"  value = "familyReunification" id="familyReunification" />
 						Family Reunification
 					</div>
 					<div class="col-md-3">
-						<input type="checkbox"  value="${caseWorkerDetailsDTO.alternativeResponse}" id="alternativeResponse" />
+					<input type="checkbox"  name="alternativeResponse"  value = "alternativeResponse" id="alternativeResponse" />
 						Alternative Response
 					</div>
 					<div class="col-md-3">
@@ -229,8 +229,8 @@
 			 <div class="col-md-3">
 		    	<label class="labelStyle" for="personRespForPurchase"><b>Person(s) responsible for making purchase*:</b></label> 
 		     </div>
-			 <div class="col-md-9">		
-				<input value="${caseWorkerDetailsDTO.personRespForPurchase}" required data-msg-required=">Person(s) responsible for making purchase is required."/>
+			 <div class="col-md-9">	
+			  <input type="text" id="personRespForPurchase" name="personRespForPurchase" class="form-control" required data-msg-required=">Person(s) responsible for making purchase is required."/>	
 			</div>
 		  </div>
 		 <div class="row">		
@@ -238,7 +238,7 @@
 		    	<label class="labelStyle" for="requestPurpose"><b>Purpose of Request*:</b></label> 
 		    </div>
 		    <div class="col-md-9">	
-		    	<textarea rows = "5" cols="30"  name="${caseWorkerDetailsDTO.requestPurpose}" required data-msg-required="Purpose of Request is required.">
+		    	<textarea rows = "5" cols="30"  name="requestPurpose" required data-msg-required="Purpose of Request is required.">
 		    		${caseWorkerDetailsDTO.requestPurpose}
 		    	</textarea>
 			</div>
@@ -256,7 +256,7 @@
 		    	<label class="labelStyle" for="totalAmtRequested"><b>Total Amount Requested:</b></label> 
 		    </div>
 		    <div class="col-md-3">	
-				<input value="${caseWorkerDetailsDTO.totalAmtRequested}" />
+				<input type="text" id="totalAmtRequested" name="totalAmtRequested" class="form-control" />
 			</div>
 			<div class="col-md-3">
 		    	<label class="labelStyle" for="dateRequired"><b>Date Required*:</b></label> 
@@ -295,7 +295,7 @@
 		  	  	<label class="labelStyle" for="paymentMadeFor"><b>Made Payable To:*</b></label>
 		  	  </div>
 		  	  <div class="col-md-3">
-		  	  	<textarea  name="${caseWorkerDetailsDTO.paymentMadeFor}" rows = "5" cols="30" required data-msg-required="Made Payable To is required.">${caseWorkerDetailsDTO.paymentMadeFor}</textarea>
+		  	  	<textarea  name="paymentMadeFor" rows = "5" cols="30" required data-msg-required="Made Payable To is required.">${caseWorkerDetailsDTO.paymentMadeFor}</textarea>
 		  	  </div>
 		  	  <div class="col-md-3">
 		  	  	<label class="labelStyle" for="furnitureDeliveryAddress">Furniture/Appliances Delivery to:</label>
@@ -313,7 +313,7 @@
 		  	  	<label class="labelStyle" for="otherInstructions">Other Instructions:</label>
 		  	  </div>
 		  	 <div class="col-md-3">
-		  	  	<textarea  name="${caseWorkerDetailsDTO.otherInstructions}"  rows = "5" cols="30">${caseWorkerDetailsDTO.otherInstructions}</textarea>
+		  	  	<textarea  name="otherInstructions"  rows = "5" cols="30">${caseWorkerDetailsDTO.otherInstructions}</textarea>
 		  	  </div>
 		  	 <div class="col-md-6"> 
 		  	 	<div class="row">
@@ -321,15 +321,15 @@
 				  	  	<label class="labelStyle" for="budgetCenter">Charge to budget Center: #</label>
 				  	  </div>
 				  	  <div class="col-md-6">
-				  	  	<input value="${caseWorkerDetailsDTO.budgetCenter}"/>
+				  	 	 <input type="text" id="budgetCenter" name="budgetCenter" class="form-control" />
 				  	  </div>
 			  	 </div> 
 			  	 <div class="row">
-				  	   <div class="col-md-6">
+				  	  <div class="col-md-6">
 				  	  	<label class="labelStyle" for="lineItem">Line Item#</label>
 				  	  </div>
-				  	   <div class="col-md-6">
-				  	  	<input value="${caseWorkerDetailsDTO.lineItem}"/>
+				  	  <div class="col-md-6">
+				  	   	<input type="text" id="lineItem" name="lineItem" class="form-control" />
 				  	  </div>
 			  	</div>
 			  </div>	 
@@ -344,7 +344,7 @@
 		<table>
 			<tr>
 				<td>
-					<button type="submit" class="btn btn-primary" id="fundRequestSubmitURL">Search</button>
+					<button type="submit" class="btn btn-primary" id="fundRequestSubmitURL">Submit the request for approval</button>
 				</td>
 			</tr>
 		</table>
