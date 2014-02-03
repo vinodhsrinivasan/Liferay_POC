@@ -76,6 +76,8 @@
 
 <portlet:resourceURL var="fundRequestSubmitURL" id="fundRequestSubmitURL" ></portlet:resourceURL>
 
+
+
 <div class="bootstrap3" id="lccs-request-for-funds-body">	
 <div id="lccs-request-for-funds-main-content">
 <fieldset class="fsStyle">
@@ -118,6 +120,7 @@
 				</div>
 				<div class="fieldCol">		 
 					<c:out value="${caseWorkerDetailsDTO.workerPhoneNumber}"></c:out>
+					<form:hidden path="workerPhoneNumber" />
 				</div>
 			</div>
 		</div>
@@ -145,7 +148,7 @@
 						Preplacement Prevention
 					</div>
 					<div class="col-md-3">
-					<input type="checkbox" name="${caseWorkerDetailsDTO.afterCareIndependence}"  value = "afterCareIndependence" id="afterCareIndependence" />
+					<input type="checkbox"  name="afterCareIndependence"  value = "afterCareIndepend" id="afterCareIndepend" />
 						Aftercare Independence
 					</div>
 					<div class="col-md-3">
@@ -208,11 +211,11 @@
 						<c:out value="${caseParticipant.sacwisId}"></c:out>
 					</div>
 					<div class="col-md-3">
-						DOB&nbsp;&nbsp;&nbsp;&nbsp;
+						DOB:&nbsp;&nbsp;&nbsp;&nbsp;
 						<c:out value="${caseParticipant.dob}"></c:out>
 					</div>	
 					<div class="col-md-3">
-					Type&nbsp;&nbsp;&nbsp;&nbsp;
+					Type:&nbsp;&nbsp;&nbsp;&nbsp;
 						<c:out value="${caseParticipant.type}"></c:out>
 					</div>
 				</div>
@@ -262,7 +265,7 @@
 		    	<label class="labelStyle" for="dateRequired"><b>Date Required*:</b></label> 
 		    </div>
 		    <div class="col-md-3">
-				<input value="${caseWorkerDetailsDTO.dateRequired}" class="span2" data-date-format="mm/dd/yy" size="40" maxlength="10" required data-msg-required="Date Required is required." />
+				<input value="${caseWorkerDetailsDTO.dateRequired}"  maxlength="10" required data-msg-required="Date Required is required." />
 			</div>
 		  </div>
 		  <div class="row">

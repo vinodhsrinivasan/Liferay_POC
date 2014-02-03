@@ -66,7 +66,7 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 		
 		searchResult.setDonation(LucasServiceConstants.CHECKBOX_OFF);
 		searchResult.setPrePlacement(LucasServiceConstants.CHECKBOX_OFF);
-		searchResult.setAfterCareIndependence(LucasServiceConstants.CHECKBOX_ON);
+		searchResult.setAfterCareIndependence(LucasServiceConstants.CHECKBOX_OFF);
 		searchResult.setKinshipCare(LucasServiceConstants.CHECKBOX_OFF);
 		searchResult.setOperating(LucasServiceConstants.CHECKBOX_OFF);
 		searchResult.setFamilyReunification(LucasServiceConstants.CHECKBOX_OFF);

@@ -23,12 +23,13 @@ public interface RequestFundsMapper {
 	/*@Select("SELECT * FROM user_ WHERE userId = #{userId}")
 	public User searchBasedOnSacwisId(@Param("userId") String userId);*/
 	
-	static final String SQL="select  SACWIS.GET_PERSON_NAME_FORMAT(p.person_id, 'LSFM') as personFullName, to_char(p.birth_date,'MM/DD/yyyy') as dob, p.person_id as sacwisId,cpr.RELATIONSHIP_CODE as type,"+
+	static final String SQL="select  SACWIS.GET_PERSON_NAME_FORMAT(p.person_id, 'LSFM') as personFullName, to_char(p.birth_date,'MM/DD/yyyy') as dob, p.person_id as sacwisId,RD.SHORT_DESC as type,"+
             " to_char(lce.CUSTODY_START_DATE,'MM/DD/YYYY') as custodyDate, ag.agency_name as custody, ag.agency_id as custodyAgencyId ,  ps.PLACEMENT_SETTING_ID as placement, e.IVE_ELIGIBLE_INDICATOR as iveReimbursable, cp.case_id as caseId "+
 			" from sacwis.case_participant cp inner join sacwis.case_participant cRefPerson on cp.case_id = cRefPerson.case_id  and cRefPerson.reference_person_flag = 1 "+
 			" inner join sacwis.person p on p.person_id = cp.person_id "+        
 			" left outer join SACWIS.CASE_PARTICIPANT_RELN cpr "+ //only get relationships that are 'to' the case reference person 
 			" on cpr.case_id = cp.case_id and cpr.dest_person_id = cp.person_id and cpr.SOURCE_PERSON_ID = cRefPerson.person_id "+
+			" left outer join SACWIS.REF_DATA RD on RD.REF_DATA_CODE = cpr.RELATIONSHIP_CODE and RD.DOMAIN_CODE = 'Relationship' "+
 			" left outer join SACWIS.LEGAL_CUSTODY_EPISODE lce  on lce.PERSON_ID = cp.PERSON_ID and nvl(lce.CREATED_IN_ERROR_FLAG,0) = 0 "+
 			" left outer join SACWIS.LEGAL_CUSTODY_AGENCY_LINK lcal on lcal.LEGAL_CUSTODY_EPISODE_ID = lce.LEGAL_CUSTODY_EPISODE_ID "+
 			" left outer join agency ag on ag.agency_id = lcal.agency_id "+
