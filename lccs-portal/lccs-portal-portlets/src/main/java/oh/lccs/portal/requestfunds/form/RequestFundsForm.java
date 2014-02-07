@@ -20,7 +20,9 @@ public class RequestFundsForm {
 	private String sacwisId;
 	private String requestedDate;
 	private String requestingCaseWorker;
+	private String requestingCaseWorkerId;
 	private String caseWorker;
+	private String caseWorkerId;
 	private String caseName;
 	private String workerPhoneNumber;
 	
@@ -113,7 +115,7 @@ public class RequestFundsForm {
 	 * @param modifiedDate
 	 */
 	public RequestFundsForm(String sacwisId, String requestedDate,
-			String requestingCaseWorker, String caseWorker, String caseName,
+			String requestingCaseWorker,String requestingCaseWorkerId,  String caseWorker, String caseWorkerId, String caseName,
 			String workerPhoneNumber, String donation, String prePlacement,
 			String afterCareIndependence, String kinshipCare, String operating,
 			String familyReunification, String alternativeResponse,
@@ -130,7 +132,9 @@ public class RequestFundsForm {
 		this.sacwisId = sacwisId;
 		this.requestedDate = requestedDate;
 		this.requestingCaseWorker = requestingCaseWorker;
+		this.requestingCaseWorkerId = requestingCaseWorkerId;
 		this.caseWorker = caseWorker;
+		this.caseWorkerId = caseWorkerId;
 		this.caseName = caseName;
 		this.workerPhoneNumber = workerPhoneNumber;
 		this.donation = donation;
@@ -188,6 +192,22 @@ public class RequestFundsForm {
 	public void setCaseWorker(String caseWorker) {
 		this.caseWorker = caseWorker;
 	}
+	public String getRequestingCaseWorkerId() {
+		return requestingCaseWorkerId;
+	}
+
+	public void setRequestingCaseWorkerId(String requestingCaseWorkerId) {
+		this.requestingCaseWorkerId = requestingCaseWorkerId;
+	}
+
+	public String getCaseWorkerId() {
+		return caseWorkerId;
+	}
+
+	public void setCaseWorkerId(String caseWorkerId) {
+		this.caseWorkerId = caseWorkerId;
+	}
+
 	public String getWorkerPhoneNumber() {
 		return workerPhoneNumber;
 	}

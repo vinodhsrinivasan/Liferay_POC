@@ -137,6 +137,7 @@ public class RequestFundsPortlet {
 
 	 private void setMockRequestAttributes(Model model) {
 		 model.addAttribute("requestingCaseWorker","Mark Waugh");
+		 model.addAttribute("requestingCaseWorkerId","123212");
 		 model.addAttribute("workerPhoneNumber","723-123-4567");
 		 model.addAttribute("requestedDate",REQUEST_DATE_FORMAT.format( new Date()));
 	 }

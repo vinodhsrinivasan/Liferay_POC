@@ -130,6 +130,16 @@
 
 	
 <form name="requestFundsCaseDetailsForm" id="requestFundsCaseDetailsForm" class="form-inline"  onsubmit="return false;" method="post" action="#">
+
+<input type="hidden" id="workerPhoneNumber" name="workerPhoneNumber" value="${caseWorkerDetailsDTO.workerPhoneNumber}" />
+<input type="hidden" id="caseWorker" name="caseWorker" value="${caseWorkerDetailsDTO.caseWorker}" />
+<input type="hidden" id="caseName" name="caseName" value="${caseWorkerDetailsDTO.caseName}" />
+<input type="hidden" id="requestingCaseWorker" name="requestingCaseWorker" value="${caseWorkerDetailsDTO.requestingCaseWorker}" />
+<input type="hidden" id="requestedDate" name="requestedDate" value="${requestedDate}" />
+<input type="hidden" id="sacwisId" name="sacwisId" value="${caseWorkerDetailsDTO.sacwisId}" />
+<input type="hidden" id="caseWorkerId" name="caseWorkerId" value="${caseWorkerDetailsDTO.caseWorkerId}" />
+<input type="hidden" id="requestingCaseWorkerId" name="requestingCaseWorkerId" value="${caseWorkerDetailsDTO.requestingCaseWorkerId}" />
+
  <fieldset class="fsStyle">
     <legend class="legendStyle">Check Person for which this request is being made</legend>		
 		<div class="tab-content-container">
@@ -232,9 +242,12 @@
 			 <div class="col-md-3">
 		    	<label class="labelStyle" for="personRespForPurchase"><b>Person(s) responsible for making purchase*:</b></label> 
 		     </div>
-			 <div class="col-md-9">	
-			  <input type="text" id="personRespForPurchase" name="personRespForPurchase" class="form-control" required data-msg-required=">Person(s) responsible for making purchase is required."/>	
+			 <div class="col-md-3">	
+			  <input type="text" id="personRespForPurchase" size="1" id = "personRespForPurchase" name="personRespForPurchase" class="form-control" required data-msg-required=">Person(s) responsible for making purchase is required."/>	
 			</div>
+			<div class="col-md-6">
+			 	&nbsp;
+		  	</div>
 		  </div>
 		 <div class="row">		
 		    <div class="col-md-3">
@@ -250,8 +263,8 @@
 		   <div class="col-md-3">
 		    	<label class="labelStyle" for="otherCommResContacted">Other Community Resources Contacted:</label> 
 		   </div>
-		   <div class="col-md-9">	
-		  	 <input type="text" id="otherCommResContacted" name="otherCommResContacted" class="form-control" />
+		   <div class="col-md-3">	
+		  	 <input type="text" id="otherCommResContacted" value="${caseWorkerDetailsDTO.otherCommResContacted}" name="otherCommResContacted" class="form-control" />
 		   </div>
 		 </div>
 		  <div class="row">		
@@ -259,13 +272,16 @@
 		    	<label class="labelStyle" for="totalAmtRequested"><b>Total Amount Requested:</b></label> 
 		    </div>
 		    <div class="col-md-3">	
-				<input type="text" id="totalAmtRequested" name="totalAmtRequested" class="form-control" />
+				<input type="text" value="${caseWorkerDetailsDTO.totalAmtRequested}" id="totalAmtRequested" size="1" name="totalAmtRequested" class="form-control" />
 			</div>
+			<div class="col-md-6">
+			 	&nbsp;
+		  	</div>
 			<div class="col-md-3">
 		    	<label class="labelStyle" for="dateRequired"><b>Date Required*:</b></label> 
 		    </div>
 		    <div class="col-md-3">
-				<input value="${caseWorkerDetailsDTO.dateRequired}"  maxlength="10" required data-msg-required="Date Required is required." />
+				<input value="${caseWorkerDetailsDTO.dateRequired}" name="dateRequired" id="datepickerToRequiredDate"  maxlength="10" required data-msg-required="Date Required is required." />
 			</div>
 		  </div>
 		  <div class="row">
@@ -324,7 +340,7 @@
 				  	  	<label class="labelStyle" for="budgetCenter">Charge to budget Center: #</label>
 				  	  </div>
 				  	  <div class="col-md-6">
-				  	 	 <input type="text" id="budgetCenter" name="budgetCenter" class="form-control" />
+				  	 	 <input type="text" id="budgetCenter"  value="${caseWorkerDetailsDTO.budgetCenter}" name="budgetCenter" class="form-control" />
 				  	  </div>
 			  	 </div> 
 			  	 <div class="row">
@@ -332,7 +348,7 @@
 				  	  	<label class="labelStyle" for="lineItem">Line Item#</label>
 				  	  </div>
 				  	  <div class="col-md-6">
-				  	   	<input type="text" id="lineItem" name="lineItem" class="form-control" />
+				  	   	<input type="text" id="lineItem"  value="${caseWorkerDetailsDTO.lineItem}" name="lineItem" class="form-control" />
 				  	  </div>
 			  	</div>
 			  </div>	 

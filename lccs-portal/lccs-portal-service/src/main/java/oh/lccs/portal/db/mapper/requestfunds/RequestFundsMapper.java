@@ -44,7 +44,7 @@ public interface RequestFundsMapper {
 	static final String SAMPLE="select case_id as caseId from sacwis.case_participant where rownum=1";
 	
 	static final String CASE_SQL = "select GET_PERSON_FULL_NAME(SU.PERSON_ID) as caseWorker, "+
-				"(CB.LAST_NAME||', '|| CB.FIRST_NAME ||DECODE(CB.MIDDLE_NAME,NULL, ' ',CB.MIDDLE_NAME ))AS caseName from WORK_ASSIGNMENT WA "
+				"(CB.LAST_NAME||', '|| CB.FIRST_NAME ||DECODE(CB.MIDDLE_NAME,NULL, ' ',CB.MIDDLE_NAME ))AS caseName, su.person_id as caseWorkerId from WORK_ASSIGNMENT WA "
 				+ "inner join workload_item wi on wi.workload_item_id = wa.workload_item_id "
 				+ " inner join EMPLOYEE E on E.EMPLOYEE_ID = WA.EMPLOYEE_ID "
 				+ " inner join SECURITY_USER SU on SU.EMPLOYEE_ID = E.EMPLOYEE_ID "

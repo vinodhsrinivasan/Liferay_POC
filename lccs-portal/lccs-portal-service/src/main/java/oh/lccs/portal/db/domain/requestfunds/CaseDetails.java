@@ -17,7 +17,9 @@ public class CaseDetails {
 	private String sacwisId;
 	private String requestedDate;
 	private String requestingCaseWorker;
+	private String requestingCaseWorkerId;
 	private String caseWorker;
+	private String caseWorkerId;
 	private String caseName;
 	private String workerPhoneNumber;
 	
@@ -82,12 +84,28 @@ public class CaseDetails {
 		this.requestingCaseWorker = requestingCaseWorker;
 	}
 
+	public String getRequestingCaseWorkerId() {
+		return requestingCaseWorkerId;
+	}
+
+	public void setRequestingCaseWorkerId(String requestingCaseWorkerId) {
+		this.requestingCaseWorkerId = requestingCaseWorkerId;
+	}
+
 	public String getCaseWorker() {
 		return caseWorker;
 	}
 
 	public void setCaseWorker(String caseWorker) {
 		this.caseWorker = caseWorker;
+	}
+
+	public String getCaseWorkerId() {
+		return caseWorkerId;
+	}
+
+	public void setCaseWorkerId(String caseWorkerId) {
+		this.caseWorkerId = caseWorkerId;
 	}
 
 	public String getCaseName() {

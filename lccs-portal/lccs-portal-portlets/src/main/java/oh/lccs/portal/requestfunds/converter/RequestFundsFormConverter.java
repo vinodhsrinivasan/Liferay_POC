@@ -28,7 +28,8 @@ public class RequestFundsFormConverter implements Converter<RequestFundsForm, Re
     public RequestFundsDTO convert(RequestFundsForm requestFundsForm) {
         Preconditions.checkNotNull(requestFundsForm);
         return new RequestFundsDTO(requestFundsForm.getSacwisId(),requestFundsForm.getRequestedDate(),
-        		requestFundsForm.getRequestingCaseWorker(),requestFundsForm.getCaseWorker(), requestFundsForm.getCaseName(),
+        		requestFundsForm.getRequestingCaseWorker(),requestFundsForm.getRequestingCaseWorkerId(), requestFundsForm.getCaseWorker(),
+        		requestFundsForm.getCaseWorkerId(), requestFundsForm.getCaseName(),
         		requestFundsForm.getWorkerPhoneNumber(), requestFundsForm.getDonation(), requestFundsForm.getPrePlacement(),
         		requestFundsForm.getAfterCareIndependence(), requestFundsForm.getKinshipCare(), requestFundsForm.getOperating(),
         		requestFundsForm.getFamilyReunification(), requestFundsForm.getAlternativeResponse(),

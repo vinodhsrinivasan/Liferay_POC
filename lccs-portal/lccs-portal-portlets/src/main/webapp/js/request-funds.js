@@ -91,6 +91,7 @@ var requestFundsCaseDetailsObj={
 		init:function(url){
 //			alert(url);
 			//added rules to form
+			$( "#datepickerToRequiredDate" ).datepicker();
 			$("#requestFundsCaseDetailsForm").validate(
 								{
 									errorContainer: $('#form-validation-errors'),
@@ -100,13 +101,26 @@ var requestFundsCaseDetailsObj={
 										personRespForPurchase: {
 											minlength:5,
 											maxlength:20,
+										},
+										totalAmtRequested : {
+											digits : true
+										},
+										personRespForPurchase : {
+											digits : true
 										}
 									},
 									messages : {
 										personRespForPurchase :{
 											minlength: "Person(s) responsible for making purchase must have minimum 5 characters",
 											maxlength: "Person(s) responsible for making purchase can have maximum 20 characters.",
+										},
+										totalAmtRequested : {
+											digits : "Total Amount Requested field must be digits"
+										},
+										personRespForPurchase : {
+											digits : "Person Responsible must be digits"
 										}
+									
 									}
 								});
 			$("#requestFundsCaseDetailsForm").submit(function(){

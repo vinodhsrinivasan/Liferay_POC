@@ -50,6 +50,7 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 		}
 		searchResult.setRequestedDate("01/01/2013");
 		searchResult.setRequestingCaseWorker("Test Requestor");
+		searchResult.setRequestingCaseWorkerId("121212");
 		searchResult.setWorkerPhoneNumber("(123) 456 - 7890");
 		searchResult.setPersonRespForPurchase("Test Purchaser");
 		searchResult.setRequestPurpose("To purchase office supplies");
@@ -170,8 +171,8 @@ public class RequestFundsServiceImpl implements RequestFundsService {
 			requestFunds.setRequestedDate(new Date());
 		}
 		
-		if(dto.getRequestingCaseWorker() != null){
-			requestFunds.setRequestingCaseWorker(new BigDecimal(dto.getRequestingCaseWorker()));
+		if(dto.getRequestingCaseWorkerId() != null){
+			requestFunds.setRequestingCaseWorker(new BigDecimal(dto.getRequestingCaseWorkerId()));
 		}else{
 			requestFunds.setRequestingCaseWorker(new BigDecimal(0));
 		}
